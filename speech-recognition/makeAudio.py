@@ -5,7 +5,7 @@ gTTS("Hi Minh-An! What would you like to do today?").save('recordings/intro.mp3'
 gTTS("Is there anything else you would like to do?").save('recordings/prompt.mp3')
 
 # recording
-gTTS("Make sure everyone you has consented to being recorded. \
+gTTS("Make sure everyone around you has consented to being recorded. \
 	Would you like to continue?").save('recordings/recording_warning.mp3')
 gTTS("Now recording.").save('recordings/start_recording.mp3')
 gTTS("Recording ended. Would you like to save?").save('recordings/end_recording.mp3')
