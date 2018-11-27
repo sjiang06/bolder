@@ -6,7 +6,6 @@ import phrases
 
 
 def getCommand():
-    print 'getting recording'
     command = getAudio()
     while not command:
         playAudio(phrases.try_again)

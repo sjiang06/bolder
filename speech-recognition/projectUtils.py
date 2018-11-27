@@ -62,5 +62,4 @@ def playAudio(filename):
 	pygame.mixer.music.play()
 	while pygame.mixer.music.get_busy():
 		pygame.time.delay(100)
-	print 'ended'
 
