@@ -5,6 +5,7 @@ import pygame
 
 r = sr.Recognizer()
 r.pause_threshold = 0.5
+r.dynamic_energy_threshold_ratio = 1.8
 pygame.init()
 pygame.mixer.init()
 
