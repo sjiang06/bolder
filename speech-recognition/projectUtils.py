@@ -4,6 +4,7 @@ import speech_recognition as sr
 import pygame
 
 r = sr.Recognizer()
+r.pause_threshold = 0.5
 pygame.init()
 pygame.mixer.init()
 
@@ -23,8 +24,19 @@ def listRecordings(skill):
 		skill + ": " + recordingList).save(phrases.list_recordings)
 
 def listStruggle(recording):
-	gTTS("You struggled with " + phrases.recordings[recording] + " in this \
+	gTTS("You struggled with " + phrases.recordings[recording.lower()] + " in this \
 		recording. Would you like to practice?").save(phrases.list_struggle)
+
+def listAllStruggles(skill):
+	struggles = ''
+	recordings = phrases.skills[skill.lower()]
+	for r in recordings:
+		struggles += phrases.recordings[r.lower()] + ', '
+	gTTS('Here are the goals listed under ' + skill + ': ' + struggles + '. \
+		Say a goal to practice.').save(phrases.all_struggles) 
+
+def sayPractice(goal):
+	gTTS('Now practicing ' + goal + '.').save(phrases.practice_skill)
 
 def select(obj):
 	gTTS(obj + " selected.").save(phrases.select)
@@ -38,17 +50,17 @@ def getAudio():
 	try:
 	    text = r.recognize_google(audio)
 	    print("Google Speech Recognition thinks you said " + text)
-	    print 'here'
 	    return text
 	except sr.UnknownValueError:
 	    print("Google Speech Recognition could not understand audio")
-	    return False
 	except sr.RequestError as e:
 	    print("Could not request results from Google Speech Recognition service; {0}".format(e))
-	    return False
+  	return False
 
 def playAudio(filename):
 	pygame.mixer.music.load(filename)
 	pygame.mixer.music.play()
-	pygame.event.wait()
+	while pygame.mixer.music.get_busy():
+		pygame.time.delay(100)
+	print 'ended'
 

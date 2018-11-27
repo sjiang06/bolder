@@ -24,7 +24,7 @@ def saveRecording():
         playAudio(phrases.skill_recording)
         skill = getCommand()
         if skill in phrases.skills:
-            phrases.skills[skill].append[name]
+            phrases.skills[skill].append(name)
         else:
             phrases.skills[skill] = [name]
             listSkills()
@@ -38,71 +38,94 @@ def saveRecording():
 
 def makeRecording():
     playAudio(phrases.pre_recording)
-    print 'i am here'
     command = getCommand()
     if command.lower() == 'yes':
         playAudio(phrases.start_recording)
     elif command.lower() == 'no':
         return
+    elif command.lower() == 'current_mode':
+        playAudio(phrases.recording_mode)
+        return
     saveRecording()
 
-def practice():
-    print 'practicing!'
+def practice(goal):
+    sayPractice(goal)
+    playAudio(phrases.practice_skill)
 
 def playRecording(name):
-    gTTS("Now playing " + name + ".").save(phrases.play_recording.mp3)
-    playAudio(phrases.play_recording.mp3)
-    listStruggle(name)
+    gTTS("Now playing " + name.lower() + ".").save(phrases.play_recording)
+    playAudio(phrases.play_recording)
+    listStruggle(name.lower())
     playAudio(phrases.list_struggle)
     command = getCommand()
     if command.lower() == 'yes':
-        practice()
+        practice(phrases.recordings[name.lower()])
 
 
 def selectRecording(command):
-    listRecordings(command)
+    listRecordings(command.lower())
     playAudio(phrases.list_recordings)
     name = getCommand()
-    if name in phrases.skills[command]:
-        playRecording(name)
+    if name.lower() in phrases.skills[command.lower()]:
+        playRecording(name.lower())
     else:
-        selectRecording()
+        playAudio(phrases.try_again)
 
 def search():
     playAudio(phrases.search_prompt)
     command = getCommand()
-    if command in phrases.skills:
+    if command.lower() in phrases.skills:
         selectRecording(command)
-    elif command in phrases.recordings:
-        playRecording(name)
+    elif command.lower() in phrases.recordings:
+        playRecording(command.lower())
+    elif command.lower() == 'current_mode':
+        playAudio(phrases.search_mode)
+    else:
+        playAudio(phrases.try_again)
 
-def practice():
-    playAudio(phrases.practice_prompt)
-    command = getCommand()
-    if command in phrases.skills:
-        print 'hello'
-    elif command in phrases.recordings:
-        print 'bye'
-    elif command in phrases.goals:
-        select(command)
-        playAudio(phrases.select)
+def getPracticeSkill(command):
+    if command is None:
+        playAudio(phrases.practice_prompt)
+        command = getCommand()
+    if command.lower() in phrases.skills:
+        listAllStruggles(command.lower())
+        playAudio(phrases.all_struggles)
+        goal = getCommand()
+        if goal in phrases.goals:
+            practice(goal)
+        else:
+            playAudio(phrases.try_again)
+    elif command.lower() == 'list skills':
+        listSkills()
+        playAudio(phrases.list_skills)
+        command = getCommand()
+        getPracticeSkill(command.lower())
+    elif command.lower() == 'current mode':
+        playAudio(phrases.practice_mode)
+    else:
+        playAudio(phrases.try_again)
 
 listSkills()
 endSession = False
+playAudio(phrases.sync)
 playAudio(phrases.intro)
 while not endSession:
     command = getCommand()
     while not command:
         playAudio(phrases.try_again)
+        command = getCommand()
     if command.lower() == 'start recording':
         makeRecording()
     elif command.lower() == 'search':
         search()
     elif command.lower() == 'practice':
-        practice()
+        getPracticeSkill(None)
     elif command.lower() == 'help':
-        print 'hello'
-    elif command.lower() == 'goodbye':
+        playAudio(phrases.help_prompt)
+    elif command.lower() == 'no' or command.lower() == 'goodbye':
+        playAudio(phrases.sign_off)
         endSession = True
+    else: 
+        playAudio(phrases.try_again)
     if not endSession: playAudio(phrases.prompt)
 
