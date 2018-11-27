@@ -36,6 +36,14 @@ def listAllStruggles(skill):
 	gTTS('Here are the goals listed under ' + skill + ': ' + struggles + '. \
 		Say a goal to practice.').save(phrases.all_struggles) 
 
+def listAllRecordings():
+	recordingString = ''
+	for skill in phrases.skills:
+		recordings = phrases.skills[skill]
+		for r in recordings:
+			recordingString += r + ', '
+	gTTS('Here is a list of all your recordings: ' + recordingString).save(phrases.all_recordings)
+
 def sayPractice(goal):
 	gTTS('Now practicing ' + goal + '.').save(phrases.practice_skill)
 

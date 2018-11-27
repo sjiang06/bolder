@@ -26,6 +26,7 @@ name_recording = 'recordings/name_recording.mp3'
 skill_recording = 'recordings/skill_recording.mp3'
 select = "recordings/select.mp3"
 recording_mode = 'recordings/recording_mode.mp3'
+all_recordings = 'recordings/all_recordings.mp3'
 
 # search
 search_prompt = 'recordings/search_prompt.mp3'

@@ -45,6 +45,8 @@ def makeRecording():
     elif command.lower() == 'current_mode':
         playAudio(phrases.recording_mode)
         return
+    elif command.lower() == 'back':
+        return
     saveRecording()
 
 def practice(goal):
@@ -59,6 +61,10 @@ def playRecording(name):
     command = getCommand()
     if command.lower() == 'yes':
         practice(phrases.recordings[name.lower()])
+    elif command.lower() == 'back':
+        return
+    else:
+        playAudio(phrases.try_again)
 
 
 def selectRecording(command):
@@ -67,6 +73,8 @@ def selectRecording(command):
     name = getCommand()
     if name.lower() in phrases.skills[command.lower()]:
         playRecording(name.lower())
+    elif name.lower() == 'back':
+        return
     else:
         playAudio(phrases.try_again)
 
@@ -77,8 +85,18 @@ def search():
         selectRecording(command)
     elif command.lower() in phrases.recordings:
         playRecording(command.lower())
+    elif command.lower() == 'list skills':
+        listSkills()
+        playAudio(phrases.list_skills)
+        search()
+    elif command.lower() == 'list recordings':
+        listAllRecordings()
+        playAudio(phrases.all_recordings)
+        search()
     elif command.lower() == 'current_mode':
         playAudio(phrases.search_mode)
+    elif command.lower() == 'back':
+        return
     else:
         playAudio(phrases.try_again)
 
@@ -101,6 +119,8 @@ def getPracticeSkill(command):
         getPracticeSkill(command.lower())
     elif command.lower() == 'current mode':
         playAudio(phrases.practice_mode)
+    elif command.lower() == 'back':
+        return
     else:
         playAudio(phrases.try_again)
 
