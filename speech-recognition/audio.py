@@ -40,6 +40,7 @@ def makeRecording():
     command = getCommand()
     if command.lower() == 'yes':
         playAudio(phrases.start_recording)
+        playAudio('recordings/blooper-sound.mp3')
     elif command.lower() == 'no':
         return
     elif command.lower() == 'current_mode':
@@ -85,7 +86,7 @@ def search():
         selectRecording(command)
     elif command.lower() in phrases.recordings:
         playRecording(command.lower())
-    elif command.lower() == 'list skills':
+    elif command.lower() == 'list skills' or command.lower() == 'list options':
         listSkills()
         playAudio(phrases.list_skills)
         search()
@@ -139,7 +140,7 @@ while not endSession:
         search()
     elif command.lower() == 'practice':
         getPracticeSkill(None)
-    elif command.lower() == 'help':
+    elif command.lower() == 'help' or command.lower() == 'list options':
         playAudio(phrases.help_prompt)
     elif command.lower() == 'no' or command.lower() == 'goodbye':
         playAudio(phrases.sign_off)
