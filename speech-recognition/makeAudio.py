@@ -4,6 +4,8 @@ import phrases
 # intros
 gTTS("Hi Minh-An! What would you like to do today?").save(phrases.intro)
 gTTS("Is there anything else you would like to do?").save(phrases.prompt)
+gTTS("Boldie, the bolder").save('recordings/jingle.mp3')
+
 
 # recording
 gTTS("Make sure everyone around you has consented to being recorded. \

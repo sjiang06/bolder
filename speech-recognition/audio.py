@@ -29,8 +29,8 @@ def saveRecording():
             listSkills()
         phrases.recordings[name] = 'projection'
         gTTS("Saving " + name + " under " + skill + ".").\
-            save('recordings/save_recording.mp3')
-        playAudio('recordings/save_recording.mp3')
+            save(phrases.save_recording)
+        playAudio(phrases.save_recording)
     else:
         playAudio(phrases.stop_help)
         saveRecording()
@@ -128,6 +128,7 @@ def getPracticeSkill(command):
 listSkills()
 endSession = False
 playAudio(phrases.sync)
+playAudio(phrases.jingle)
 playAudio(phrases.intro)
 while not endSession:
     command = getCommand()
