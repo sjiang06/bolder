@@ -8,7 +8,6 @@ import {Button, View,
   Animated} from 'react-native';
 import GridView from 'react-native-gridview'
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import {Toolbar} from 'react-native-ios-kit';
 
 class HomeScreen extends React.Component {
   render() {
@@ -32,9 +31,6 @@ class HomeScreen extends React.Component {
             source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
           />
         </View>
-
-
-         
          <View style={styles.logo}>
           <Image source={require('./images/bolder_logo.png')} 
           style={{width: 400, height: 200}}/>
