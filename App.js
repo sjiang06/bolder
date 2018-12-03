@@ -28,6 +28,12 @@ class HomeScreen extends React.Component {
             source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
           />
         </View>
+
+        <View style={styles.logo}>
+          <Image source={require('./images/bolder_logo.png')} 
+          style={{width: 400, height: 200}}/>
+        </View>
+
         <View style={styles.container}>
         
         <TouchableOpacity onPress={() => {
@@ -133,11 +139,19 @@ class RecordingDetailsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
+  logo: {
+    width: 200,
+    height: 100,
+    marginBottom: 0
+  },
   container: {
     flex: 1,
     backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'white',
+    marginTop: 0
   },
   buttonLeft: {
     backgroundColor: 'transparent',
