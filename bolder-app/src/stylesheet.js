@@ -102,9 +102,35 @@ export default StyleSheet.create({
     height: 100,
   },
   scrollstyle: {
-    marginBottom:30
+    marginBottom: 30,
   },
   font: {
     fontFamily: 'Gill Sans'
+  },
+
+  viewButtons: {
+    width: 75,
+    height: 75,
+    backgroundColor: '#00b2ca',
+    margin: 5,
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  buttonFrame: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'center',
+    marginBottom: 90
+  },
+
+  screenFrame: {
+    flexDirection: 'column',
+    flex: 1,
+    paddingLeft: 30, 
+    paddingTop: 50
   }
+
 });
