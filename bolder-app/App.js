@@ -6,11 +6,10 @@ import {Button, View,
   Image, ScrollView, 
   TouchableOpacity, PanResponder,
   Animated} from 'react-native';
-import GridView from 'react-native-gridview'
-import {createStackNavigator, createAppContainer} from 'react-navigation';
-import {Toolbar} from 'react-native-ios-kit';
+import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
 
-class HomeScreen extends React.Component {
+export class HomeScreen extends React.Component {
   render() {
     const resizeMode = 'cover';
     return (
@@ -83,6 +82,17 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
+export class HelpScreen extends React.Component {
+  render() {
+    return (
+      <View style={{flex:1}}>
+        <Text> Hello world </Text>
+      </View>
+    );
+  }
+}
+
 
 const ImageContainer = styled.View`
   display: flex;
@@ -243,7 +253,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 100,
-    marginBottom: 0
+    marginBottom: 0,
+    marginTop: 75,
   },
   container: {
     flex: 1,
@@ -413,12 +424,53 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
   }
 );
 
-const AppContainer = createAppContainer(RootStack);
+const TabBar = createBottomTabNavigator(
+  {
+    Home: {
+      screen:RootStack,
+      navigationOptions: {
+        tabBarLabel:"Home",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons color='white' name="ios-home" size={40}/>
+        )
+      },
+    },
+    Help: {
+      screen:HelpScreen,
+      navigationOptions: {
+        tabBarLabel:"Help",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons color='white' name="ios-help-circle-outline" size={40}/>
+        )
+      },
+    },
+  },
+    {
+    tintColor: '#ffffff',
+    initialRouteName: 'Home',
+    swipeEnabled: false,
+    backBehavior: 'initialRoute',
+    tabBarOptions: {
+      showLabel: false,
+      style: {
+        backgroundColor: '#00b2ca',
+      },
+      activeTintColor: '#ffffff',
+    },
+    header:null,
+  }
+);
 
-export default class App extends React.Component {
+const AppContainer = createAppContainer(TabBar);
+
+export default class App extends Component {
   render() {
     return <AppContainer />;
   }
