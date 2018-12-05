@@ -109,12 +109,12 @@ export default class AchievementsScreen extends Component {
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
-		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
+		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList', MEMORIES)}>
 				          <View style={styles.viewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
-				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('CalendarView')}>
+				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('CalendarView', MEMORIES)}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
 			          	</View>

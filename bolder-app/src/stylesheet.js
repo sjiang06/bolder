@@ -83,7 +83,7 @@ export default StyleSheet.create({
   textLeft: {
     position: 'absolute',
     top: 110,
-    right: -180,
+    right: -150,
     fontFamily: 'Gill Sans',
     fontSize: 16,
     color: 'white'
@@ -91,10 +91,11 @@ export default StyleSheet.create({
   textRight: {
     position: 'absolute',
     top: 110,
-    left: -180,
+    left: -160,
     fontFamily: 'Gill Sans',
     fontSize: 16,
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
 
   },
   iconSmall: {
@@ -150,7 +151,7 @@ export default StyleSheet.create({
   },
 
   calendarFrame: {
-    
+    marginTop: 50
   },
 
   searchBarView: {
@@ -248,7 +249,7 @@ export default StyleSheet.create({
   },
 
   smallText: {
-    fontSize: 12,
+    fontSize: 14,
     color: 'gray',
     fontFamily: 'Gill Sans',
   }
