@@ -19,18 +19,19 @@ import CalendarPicker from 'react-native-calendar-picker';
 import moment from 'moment';
 //npm install --save moment react-moment
 
-let today = moment();
-let day = today.clone().startOf('month');
-let customDatesStyles = [];
-while(day.add(5, 'day').isSame(today, 'month')) {
-  customDatesStyles.push({
-    date: day.clone(),
-    style: {backgroundColor: '#F79256'},
-  });
-}
 
 export default class CalendarScreen extends Component {
 		render() {
+			let customDatesStyles = [];
+			const { params } = this.props.navigation.state;
+			console.log(JSON.stringify(params, null, 2));
+			for (var i = 0; i < 4; i++) {
+				var date = '2018-11-' + params[i].date;
+				customDatesStyles.push({
+					date: moment(date),
+    				style: {backgroundColor: '#F79256'},
+				})
+			}
 			return (
 				<View style={styles.calendarFrame}>
 					<View style={styles.buttonFrame}>
