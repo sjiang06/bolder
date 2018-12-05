@@ -5,10 +5,14 @@ import {Button, View,
   Text, StyleSheet, 
   Image, ScrollView, 
   TouchableOpacity, PanResponder,
-  Animated} from 'react-native';
-import GridView from 'react-native-gridview'
-import {createStackNavigator, createAppContainer} from 'react-navigation';
-import {Toolbar} from 'react-native-ios-kit';
+  Animated, TextInput} from 'react-native';
+import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
+import AchievementsScreen from './AchievementsScreen.js';
+import CalendarScreen from './CalendarScreen.js';
+import WeekScreen from './WeekScreen.js';
+import PracticeScreen from './PracticeScreen.js';
+import styles from './src/stylesheet';
 
 class HomeScreen extends React.Component {
   render() {
@@ -45,7 +49,7 @@ class HomeScreen extends React.Component {
             /* 1. Navigate to the Recordings route with params */
             this.props.navigation.navigate('Recordings');
           }}>
-          <View>
+          <View style={styles.columnView}>
             <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
               resizeMode="contain"
            />
@@ -56,7 +60,7 @@ class HomeScreen extends React.Component {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>{alert("Going to recordings...")}}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
           <View>
             <Image style={styles.buttonRight} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
               resizeMode="contain"
@@ -83,6 +87,17 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
+export class HelpScreen extends React.Component {
+  render() {
+    return (
+      <View style={{flex:1}}>
+        <Text> Hello world </Text>
+      </View>
+    );
+  }
+}
+
 
 const ImageContainer = styled.View`
   display: flex;
@@ -205,12 +220,18 @@ class Draggable extends Component {
 }
 
 class RecordingDetailsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Useless Placeholder' };
+  }
   render() {
     const { params } = this.props.navigation.state;
     const itemsPerRow = 3;
     const data = params.goals
+    const id = params.index
     return (
       <View style={{backgroundColor: '#C8E0E3', flex: 1, alignItems: 'center'}}>
+
         <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans'}}> {params.title} </Text>
         <Text style={{fontSize:14, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{params.date} </Text>
         <Image style={{width: 150, height: 150}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
@@ -229,121 +250,20 @@ class RecordingDetailsScreen extends React.Component {
           <Draggable />
           <Draggable />
         </View>
-      </View>
+      </View> 
+        <TextInput
+          style={{height:40, position: 'absolute', top: 100, left: 100}}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />
 
+      <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', position: 'absolute', top: 50, left: 100}}> {MEMORIES[id].title} </Text>
       </View>
 
     );
   }
 }
 
-let CIRCLE_RADIUS = 30;
-
-const styles = StyleSheet.create({
-  logo: {
-    width: 200,
-    height: 100,
-    marginBottom: 0
-  },
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-    ballContainer: {
-    height:100,
-  },
-  circle: {
-    backgroundColor: "skyblue",
-    width: CIRCLE_RADIUS * 2,
-    height: CIRCLE_RADIUS * 2,
-    borderRadius: CIRCLE_RADIUS
-  },
-  row: {
-    flexDirection: "row"
-  },  
-  dropZone: {
-    height: 100,
-    backgroundColor: 'white'
-  },
-  text: {
-    marginTop: 25,
-    marginLeft: 5,
-    marginRight: 5,
-    textAlign: "center",
-    color: "#fff",
-    fontSize: 25,
-    fontWeight: "bold"
-  },
-  list: {
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  },
-  buttonLeft: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 180,
-    height: 180,
-    position: 'absolute',
-    top: -60,
-    left: -180
-  },
-  buttonRight: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 180,
-    height: 180,
-    position: 'absolute',
-    top: -60,
-    right: -180
-  },
-  iconRight: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 120,
-    height: 120,
-    position: 'absolute',
-    top: -30,
-    right: -150
-  },
-  iconLeft: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 120,
-    height: 120,
-    position: 'absolute',
-    top: -30,
-    left: -150
-  },
-  textLeft: {
-    position: 'absolute',
-    top: 110,
-    right: -180,
-    fontFamily: 'Gill Sans',
-    fontSize: 16,
-    color: 'white'
-  },
-  textRight: {
-    position: 'absolute',
-    top: 110,
-    left: -180,
-    fontFamily: 'Gill Sans',
-    fontSize: 16,
-    color: 'white'
-
-  },
-  iconSmall: {
-    width: 100,
-    height: 100,
-  },
-  scrollstyle: {
-    marginBottom:30
-  },
-  font: {
-    fontFamily: 'Gill Sans'
-  }
-});
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -352,7 +272,7 @@ function getRandomInt(max) {
 var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
 var PublicSpeakingGoals = ["Self Confidence", "Pacing", "Memorization", "Stuttering"];
 var MakingNewFriendsGoals = ["Asking Questions", "Introducing Self", "Initiating Hangouts", "Being Vulnerable"];
-var TalkingToCrushGoals = ["Texting first", "Planning hangouts", "Physical Affection", "Asking Questions"];
+var TalkingToCrushGoals = ["Texting First", "Planning Hangouts", "Physical Affection", "Asking Questions"];
 const goalMap = new Map();
 goalMap.set(SKILLS[0], PublicSpeakingGoals);
 goalMap.set(SKILLS[1], MakingNewFriendsGoals);
@@ -405,20 +325,67 @@ function compareMemories(a, b){
 
 MEMORIES.sort(compareMemories)
 
+/*Navigation for app*/
+
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Recordings: RecordingsScreen,
     RecordingDetails: RecordingDetailsScreen,
+    AchievementList: AchievementsScreen,
+    CalendarView: CalendarScreen,
+    WeekScreen: WeekScreen,
+    PracticeScreen: PracticeScreen,
   },
   {
     initialRouteName: 'Home',
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
   }
 );
 
-const AppContainer = createAppContainer(RootStack);
+const TabBar = createBottomTabNavigator(
+  {
+    Home: {
+      screen:RootStack,
+      navigationOptions: {
+        tabBarLabel:"Home",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons color='white' name="ios-home" size={40}/>
+        )
+      },
+    },
+    Help: {
+      screen:HelpScreen,
+      navigationOptions: {
+        tabBarLabel:"Help",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons color='white' name="ios-help-circle-outline" size={40}/>
+        )
+      },
+    },
+  },
+    {
+    tintColor: '#ffffff',
+    initialRouteName: 'Home',
+    swipeEnabled: false,
+    backBehavior: 'initialRoute',
+    tabBarOptions: {
+      showLabel: false,
+      style: {
+        backgroundColor: '#00b2ca',
+      },
+      activeTintColor: '#ffffff',
+    },
+    header:null,
+  }
+);
 
-export default class App extends React.Component {
+const AppContainer = createAppContainer(TabBar);
+
+export default class App extends Component {
   render() {
     return <AppContainer />;
   }
