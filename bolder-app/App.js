@@ -5,7 +5,7 @@ import {Button, View,
   Text, StyleSheet, 
   Image, ScrollView, 
   TouchableOpacity, PanResponder,
-  Animated} from 'react-native';
+  Animated, TextInput} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import AchievementsScreen from './AchievementsScreen.js';
@@ -223,8 +223,10 @@ class RecordingDetailsScreen extends React.Component {
     const { params } = this.props.navigation.state;
     const itemsPerRow = 3;
     const data = params.goals
+    const id = params.index
     return (
       <View style={{backgroundColor: '#C8E0E3', flex: 1, alignItems: 'center'}}>
+
         <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans'}}> {params.title} </Text>
         <Text style={{fontSize:14, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{params.date} </Text>
         <Image style={{width: 150, height: 150}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
@@ -243,8 +245,14 @@ class RecordingDetailsScreen extends React.Component {
           <Draggable />
           <Draggable />
         </View>
-      </View>
+      </View> 
+        <TextInput
+          style={{height:40, position: 'absolute', top: 100, left: 100}}
+          onChangeText={(text) => {MEMORIES[id].title = {text} } }
+          value={MEMORIES[id].title }
+        />
 
+      <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', position: 'absolute', top: 50, left: 100}}> {MEMORIES[id].title} </Text>
       </View>
 
     );
