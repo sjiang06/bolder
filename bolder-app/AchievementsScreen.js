@@ -8,6 +8,7 @@ import {Button, View,
   Animated} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
+import CalendarScreen from './CalendarScreen.js';
 import styles from './src/stylesheet'
 
 function getRandomInt(max) {
@@ -75,6 +76,7 @@ const ImageContainer = styled.View`
   flex-direction: column;
 `;
 
+
 export default class AchievementsScreen extends Component {
 	render() {
 		return(
@@ -85,7 +87,7 @@ export default class AchievementsScreen extends Component {
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
-				      <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+				      <TouchableOpacity onPress={()=>this.props.navigation.navigate('CalendarView')}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
 			          	</View>

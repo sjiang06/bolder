@@ -120,6 +120,17 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
 
+  nonActiveViewButtons: {
+    width: 75,
+    height: 75,
+    backgroundColor: '#778899',
+    margin: 5,
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
   buttonFrame: {
     width: '100%',
     flexDirection: 'row',
