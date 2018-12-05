@@ -219,6 +219,10 @@ class Draggable extends Component {
 }
 
 class RecordingDetailsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Useless Placeholder' };
+  }
   render() {
     const { params } = this.props.navigation.state;
     const itemsPerRow = 3;
@@ -248,8 +252,8 @@ class RecordingDetailsScreen extends React.Component {
       </View> 
         <TextInput
           style={{height:40, position: 'absolute', top: 100, left: 100}}
-          onChangeText={(text) => {MEMORIES[id].title = {text} } }
-          value={MEMORIES[id].title }
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
         />
 
       <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', position: 'absolute', top: 50, left: 100}}> {MEMORIES[id].title} </Text>
