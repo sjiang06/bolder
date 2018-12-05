@@ -149,6 +149,10 @@ export default StyleSheet.create({
     width: '100%',
   },
 
+  calendarFrame: {
+    
+  },
+
   searchBarView: {
     flexDirection: 'row',
     justifyContent: 'center',

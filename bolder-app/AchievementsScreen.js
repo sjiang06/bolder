@@ -90,7 +90,7 @@ export default class AchievementsScreen extends Component {
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
-		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
 				          <View style={styles.viewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
