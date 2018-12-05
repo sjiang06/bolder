@@ -83,17 +83,17 @@ export default StyleSheet.create({
   textLeft: {
     position: 'absolute',
     top: 110,
-    right: -150,
+    right: -160,
     fontFamily: 'Gill Sans',
-    fontSize: 16,
+    fontSize: 20,
     color: 'white'
   },
   textRight: {
     position: 'absolute',
     top: 110,
-    left: -160,
+    left: -170,
     fontFamily: 'Gill Sans',
-    fontSize: 16,
+    fontSize: 20,
     color: 'white',
     textAlign: 'center'
 
