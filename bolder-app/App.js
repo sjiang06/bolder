@@ -10,6 +10,7 @@ import {createStackNavigator, createAppContainer, createBottomTabNavigator} from
 import { Ionicons } from '@expo/vector-icons';
 import AchievementsScreen from './AchievementsScreen.js';
 import WeekScreen from './WeekScreen.js';
+import PracticeScreen from './PracticeScreen.js';
 import styles from './src/stylesheet';
 
 class HomeScreen extends React.Component {
@@ -320,6 +321,7 @@ const RootStack = createStackNavigator(
     RecordingDetails: RecordingDetailsScreen,
     AchievementList: AchievementsScreen,
     WeekScreen: WeekScreen,
+    PracticeScreen: PracticeScreen
   },
   {
     initialRouteName: 'Home',

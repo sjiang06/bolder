@@ -12,6 +12,22 @@ import styles from './src/stylesheet'
 import AchievementsScreen from './AchievementsScreen.js';
 import { App } from './App.js';
 
+function getText(opacity, date) {
+	if (opacity >= 1){
+		return "Completed on November " + date + "!";
+	} else {
+		return "Last progress on November " + date;
+	}
+}
+
+function getStarIcon(opacity) {
+	if (opacity >= 1) {
+		return "ios-star";
+	} else {
+		return "ios-star-outline";
+	}
+}
+
 export default class WeekScreen extends Component {
 	render() {
 		const { params } = this.props.navigation.state;
@@ -68,10 +84,10 @@ export default class WeekScreen extends Component {
 			    	</View>
 			    	
 			    	<View style={[styles.achievementContainer, {marginTop:0}]}>
-	                  <Ionicons color={params.color} name="ios-star" size={90} style={{marginRight:20, opacity: params.opacity}}/>
+	                  <Ionicons color={params.color} name={getStarIcon(params.opacity)} size={90} style={{marginRight:20, opacity: params.opacity}}/>
 	                  <View style={styles.columnText}>
 	                  	<Text style={{fontSize:20, color: '#F79256', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {params.achievement} </Text>
-	                    <Text style={{fontSize:18, color: '#646363', fontFamily: 'Gill Sans'}}> Last progress on {"November "}{params.date} </Text>
+	                    <Text style={{fontSize:18, color: '#646363', fontFamily: 'Gill Sans'}}>{getText(params.opacity, params.date)}</Text>
 	                    <View style={styles.pillFrame}>
 	                    	<View style={{backgroundColor:params.color, width:180, alignItems: 'center', borderRadius:25}}>
 	                    		<Text style={{fontSize:20, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {params.goalChosen.toUpperCase()} </Text>
@@ -82,21 +98,27 @@ export default class WeekScreen extends Component {
 
 	                <Text style={styles.largeText}>PRACTICE {params.goalChosen.toUpperCase()}</Text>
 	                <View style={styles.horizontalFrame}>
-		                <View style={styles.centerColumn}>
-		                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-		                	<Text style={{color:'gray'}}>Science Fair</Text>
-		                	<Text style={{color:'gray'}}>Oct 23</Text>
-		                </View>
-		                <View style={styles.centerColumn}>
-		                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-		                	<Text style={{color:'gray'}}>Lunch with Sarah</Text>
-		                	<Text style={{color:'gray'}}>Oct 31</Text>
-		                </View>
-		                <View style={styles.centerColumn}>
-		                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-		                	<Text style={{color:'gray'}}>Speech and Debate</Text>
-		                	<Text style={{color:'gray'}}>Oct 24</Text>
-		                </View>
+	                	<TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen')}>
+			                <View style={styles.centerColumn}>
+			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+			                	<Text style={styles.smallText}>Science Fair</Text>
+			                	<Text style={styles.smallText}>Oct 23</Text>
+			                </View>
+			            </TouchableOpacity>
+		                <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen')}>
+			                <View style={styles.centerColumn}>
+			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+			                	<Text style={styles.smallText}>Lunch with Sarah</Text>
+			                	<Text style={styles.smallText}>Oct 31</Text>
+			                </View>
+			            </TouchableOpacity>
+			            <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen')}>
+			                <View style={styles.centerColumn}>
+			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+			                	<Text style={styles.smallText}>Speech and Debate</Text>
+			                	<Text style={styles.smallText}>Oct 24</Text>
+			                </View>
+			            </TouchableOpacity>
 		            </View>
 			    </View>
 			</View>

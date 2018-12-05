@@ -87,6 +87,22 @@ const ImageContainer = styled.View`
   flex-direction: column;
 `;
 
+function getText(opacity, date) {
+	if (opacity >= 1){
+		return "Completed on November " + date + "!";
+	} else {
+		return "Last progress on November " + date;
+	}
+}
+
+function getStarIcon(opacity) {
+	if (opacity >= 1) {
+		return "ios-star";
+	} else {
+		return "ios-star-outline";
+	}
+}
+
 export default class AchievementsScreen extends Component {
 	render() {
 		return(
@@ -115,10 +131,10 @@ export default class AchievementsScreen extends Component {
 		                onPress={() => this.props.navigation.navigate('WeekScreen', memory)}
 		                key={index}>
 		                <View style={styles.achievementContainer}>
-		                  <Ionicons color={memory.color} name="ios-star" size={75} style={{marginRight:20, opacity:memory.opacity}}/>
+		                  <Ionicons color={memory.color} name={getStarIcon(memory.opacity)} size={75} style={{marginRight:20, opacity:memory.opacity}}/>
 		                  <View style={styles.columnText}>
 		                  	<Text style={{fontSize:20, color: '#F79256', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.achievement} </Text>
-		                    <Text style={{fontSize:16, color: '#646363', fontFamily: 'Gill Sans'}}> Last progress on {"November "}{memory.date} </Text>
+		                    <Text style={{fontSize:16, color: '#646363', fontFamily: 'Gill Sans'}}>{getText(memory.opacity, memory.date)}</Text>
 		                    <View style={styles.pillFrame}>
 		                    	<View style={{backgroundColor:memory.color, width:'100%', alignItems: 'center', borderRadius:25}}>
 		                    		<Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goalChosen.toUpperCase()} </Text>

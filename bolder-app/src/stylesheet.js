@@ -230,6 +230,12 @@ export default StyleSheet.create({
     color: 'gray',
     fontFamily: 'Gill Sans',
     fontSize: 15,
+  },
+
+  smallText: {
+    fontSize: 12,
+    color: 'gray',
+    fontFamily: 'Gill Sans',
   }
 
 });
