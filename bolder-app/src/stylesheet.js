@@ -123,6 +123,17 @@ export default StyleSheet.create({
     marginBottom: 0,
   },
 
+  nonActiveViewButtons: {
+    width: 75,
+    height: 75,
+    backgroundColor: '#778899',
+    margin: 5,
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
   buttonFrame: {
     flexWrap: 'wrap',
     width: '100%',
@@ -137,6 +148,10 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     width: '100%',
+  },
+
+  calendarFrame: {
+    
   },
 
   searchBarView: {

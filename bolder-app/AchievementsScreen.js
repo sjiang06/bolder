@@ -8,6 +8,7 @@ import {Button, View,
   Animated} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
+import CalendarScreen from './CalendarScreen.js';
 import styles from './src/stylesheet';
 import { WeekScreen } from './WeekScreen.js';
 import { App } from './App.js';
@@ -108,12 +109,12 @@ export default class AchievementsScreen extends Component {
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
-		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
 				          <View style={styles.viewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
-				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('CalendarView')}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
 			          	</View>
