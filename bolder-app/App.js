@@ -48,7 +48,7 @@ class HomeScreen extends React.Component {
             /* 1. Navigate to the Recordings route with params */
             this.props.navigation.navigate('Recordings');
           }}>
-          <View>
+          <View style={styles.columnView}>
             <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
               resizeMode="contain"
            />
