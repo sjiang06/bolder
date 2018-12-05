@@ -79,16 +79,23 @@ export default class AchievementsScreen extends Component {
 	render() {
 		return(
 			<View style={styles.screenFrame}>
-				<TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
 		          <View style={styles.buttonFrame}>
-			          <View style={styles.viewButtons}>
-			            <Ionicons color='white' name="ios-star-half" size={50}/>
-			          </View>
-			          <View style={styles.viewButtons}>
-			            <Ionicons color='white' name="ios-calendar" size={50}/>
-			          </View>
+		          	  <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+				          <View style={styles.viewButtons}>
+				            <Ionicons color='white' name="ios-star" size={50}/>
+				          </View>
+				      </TouchableOpacity>
+				      <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+			          	<View style={styles.viewButtons}>
+			            	<Ionicons color='white' name="ios-calendar" size={50}/>
+			          	</View>
+			          </TouchableOpacity>
 			        </View>
-		        </TouchableOpacity>
+			        <View style={styles.searchBarView}>
+			        	<View style={styles.searchBar}>
+			        		<Ionicons color='#B6B4B4' name="ios-search" size={25}/>
+			        	</View>
+			        </View>
 		        <ScrollView vertical={true} fillViewPort="true" contentContainerStyle={styles.scrollstyle}>
 		          <ImageContainer>
 		            {MEMORIES.map((memory, index) => (

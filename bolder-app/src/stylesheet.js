@@ -103,6 +103,7 @@ export default StyleSheet.create({
   },
   scrollstyle: {
     marginBottom: 30,
+    paddingLeft: 30,
   },
   font: {
     fontFamily: 'Gill Sans'
@@ -120,6 +121,7 @@ export default StyleSheet.create({
   },
 
   buttonFrame: {
+    width: '100%',
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
@@ -129,8 +131,25 @@ export default StyleSheet.create({
   screenFrame: {
     flexDirection: 'column',
     flex: 1,
-    paddingLeft: 30, 
-    paddingTop: 50
+    paddingTop: 50,
+    width: '100%'
+  },
+
+  searchBarView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 10,
+    width: '100%',
+    height: 35,
+  },
+
+  searchBar: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    width: 250,
+    height: '100%',
+    borderColor: '#B6B4B4',
+    borderWidth: 1,
   }
 
 });
