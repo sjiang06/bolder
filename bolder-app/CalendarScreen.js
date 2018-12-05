@@ -31,14 +31,6 @@ while(day.add(5, 'day').isSame(today, 'month')) {
 
 export default class CalendarScreen extends Component {
 		render() {
-			let data = [{
-			      value: 'All',
-			    }, {
-			      value: 'Public Speaking',
-			    }, {
-			      value: 'Making new friends',
-			    }];
-			
 			return (
 				<View style={styles.calendarFrame}>
 					<View style={styles.buttonFrame}>
@@ -52,12 +44,6 @@ export default class CalendarScreen extends Component {
 				            	<Ionicons color='white' name="ios-calendar" size={50}/>
 				          	</View>
 				          </TouchableOpacity>
-				    </View>
-
-				    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', top: 70}}>
-				    	<View style={{size: 20, width: 200}}>
-					    	<Dropdown label='Filter by' data={data}/>
-					    </View>
 				    </View>
 
 				    <View style={{top: 150}}>
