@@ -36,7 +36,7 @@ export default class CalendarScreen extends Component {
 				<View style={styles.calendarFrame}>
 					<View style={styles.buttonFrame}>
 			          	  <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
-					          <View style={styles.nonActiveViewButtons}>
+					          <View style={styles.viewButtons}>
 					            <Ionicons color='white' name="ios-star" size={50}/>
 					          </View>
 					      </TouchableOpacity>

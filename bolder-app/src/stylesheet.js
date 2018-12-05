@@ -252,6 +252,40 @@ export default StyleSheet.create({
     fontSize: 14,
     color: 'gray',
     fontFamily: 'Gill Sans',
+  },
+
+  headerText: {
+    fontSize: 30,
+    color: 'gray',
+    fontFamily: 'Gill Sans',
+    marginBottom: 10
+  },
+
+  subheaderText: {
+    fontSize: 25,
+    color: 'gray',
+    fontFamily: 'Gill Sans',
+    marginBottom: 5
+  },
+
+  pillButton: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: 250,
+    height: 50,
+    backgroundColor: '#00b2ca',
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: 'white',
+    alignItems: 'center'
+  },
+
+  pillButtonText: {
+    fontFamily: 'Gill Sans',
+    fontSize: 25,
+    color: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
   }
 
 });

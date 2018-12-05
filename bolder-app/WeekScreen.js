@@ -98,21 +98,21 @@ export default class WeekScreen extends Component {
 
 	                <Text style={styles.largeText}>PRACTICE {params.goalChosen.toUpperCase()}</Text>
 	                <View style={styles.horizontalFrame}>
-	                	<TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen')}>
+	                	<TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:'Science Fair', date:'23', params:params})}>
 			                <View style={styles.centerColumn}>
 			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
 			                	<Text style={styles.smallText}>Science Fair</Text>
 			                	<Text style={styles.smallText}>Oct 23</Text>
 			                </View>
 			            </TouchableOpacity>
-		                <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', params)}>
+		                <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:'Lunch with Sarah', date:'31', params:params})}>
 			                <View style={styles.centerColumn}>
 			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
 			                	<Text style={styles.smallText}>Lunch with Sarah</Text>
 			                	<Text style={styles.smallText}>Oct 31</Text>
 			                </View>
 			            </TouchableOpacity>
-			            <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen')}>
+			            <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:'Speech and Debate', date:'24', params:params})}>
 			                <View style={styles.centerColumn}>
 			                	<Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
 			                	<Text style={styles.smallText}>Speech and Debate</Text>
