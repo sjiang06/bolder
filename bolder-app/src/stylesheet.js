@@ -102,8 +102,9 @@ export default StyleSheet.create({
     height: 100,
   },
   scrollstyle: {
+    marginTop: 0,
+    paddingTop: 0,
     marginBottom: 30,
-    paddingLeft: 30,
   },
   font: {
     fontFamily: 'Gill Sans'
@@ -117,7 +118,8 @@ export default StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 0,
   },
 
   nonActiveViewButtons: {
@@ -132,26 +134,28 @@ export default StyleSheet.create({
   },
 
   buttonFrame: {
+    flexWrap: 'wrap',
     width: '100%',
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 90
   },
 
   screenFrame: {
     flexDirection: 'column',
+    justifyContent: 'space-around',
     flex: 1,
     paddingTop: 50,
-    width: '100%'
+    width: '100%',
   },
 
   searchBarView: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: 10,
+    paddingTop: 0,
     width: '100%',
     height: 35,
+    marginTop: 0
   },
 
   searchBar: {
@@ -159,8 +163,24 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     width: 250,
     height: '100%',
-    borderColor: '#B6B4B4',
+    borderColor: '#00b2ca',
     borderWidth: 1,
+  },
+
+  achievementContainer: {
+    flexDirection: 'row',
+    paddingTop: 15,
+    paddingLeft: 30,
+  },
+
+  columnText: {
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+
+  pillFrame: {
+    paddingTop: 3,
+    width: 150,
   }
 
 });
