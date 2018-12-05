@@ -151,7 +151,7 @@ export default StyleSheet.create({
   },
 
   calendarFrame: {
-    
+    marginTop: 50
   },
 
   searchBarView: {
