@@ -331,8 +331,7 @@ const RootStack = createStackNavigator(
     AchievementList: AchievementsScreen,
     CalendarView: CalendarScreen,
     WeekScreen: WeekScreen,
-    PracticeScreen: PracticeScreen
->>>>>>> master
+    PracticeScreen: PracticeScreen,
   },
   {
     initialRouteName: 'Home',

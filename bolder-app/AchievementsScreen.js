@@ -12,7 +12,6 @@ import CalendarScreen from './CalendarScreen.js';
 import styles from './src/stylesheet';
 import { WeekScreen } from './WeekScreen.js';
 import { App } from './App.js';
->>>>>>> master
 
 
 var colors = ['#FE938C', '#59E992', '#56AAF7', '#F79256'];
@@ -89,8 +88,6 @@ const ImageContainer = styled.View`
   flex-direction: column;
 `;
 
-<<<<<<< HEAD
-=======
 function getText(opacity, date) {
 	if (opacity >= 1){
 		return "Completed on November " + date + "!";
@@ -106,7 +103,6 @@ function getStarIcon(opacity) {
 		return "ios-star-outline";
 	}
 }
->>>>>>> master
 
 export default class AchievementsScreen extends Component {
 	render() {
