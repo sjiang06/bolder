@@ -9,7 +9,10 @@ import {Button, View,
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import CalendarScreen from './CalendarScreen.js';
-import styles from './src/stylesheet'
+import styles from './src/stylesheet';
+import { WeekScreen } from './WeekScreen.js';
+import { App } from './App.js';
+>>>>>>> master
 
 
 var colors = ['#FE938C', '#59E992', '#56AAF7', '#F79256'];
@@ -65,10 +68,12 @@ for(count = 0; count < goalMap.size; count++) {
   var achievementChosen = achievements[getRandomInt(achievements.length)];
   var mem = {
     index: count,
-    date: getRandomInt(31) + 1,
+    date: getRandomInt(24) + 7,
     skill: skillChosen,
     goalChosen: goalChosen,
     achievement: achievementChosen,
+    color: colorMap.get(goalChosen),
+    opacity: getRandomPercentage()
   };
   MEMORIES.push(mem);
 };
@@ -84,6 +89,24 @@ const ImageContainer = styled.View`
   flex-direction: column;
 `;
 
+<<<<<<< HEAD
+=======
+function getText(opacity, date) {
+	if (opacity >= 1){
+		return "Completed on November " + date + "!";
+	} else {
+		return "Last progress on November " + date;
+	}
+}
+
+function getStarIcon(opacity) {
+	if (opacity >= 1) {
+		return "ios-star";
+	} else {
+		return "ios-star-outline";
+	}
+}
+>>>>>>> master
 
 export default class AchievementsScreen extends Component {
 	render() {
@@ -110,15 +133,15 @@ export default class AchievementsScreen extends Component {
 		          <ImageContainer>
 		            {MEMORIES.map((memory, index) => (
 		              <TouchableOpacity 
-		                onPress={() => this.props.navigation.navigate('Home')}
+		                onPress={() => this.props.navigation.navigate('WeekScreen', memory)}
 		                key={index}>
 		                <View style={styles.achievementContainer}>
-		                  <Ionicons color='#FE938C' name="ios-star" size={75} style={{marginRight:20, opacity:getRandomPercentage()}}/>
+		                  <Ionicons color={memory.color} name={getStarIcon(memory.opacity)} size={75} style={{marginRight:20, opacity:memory.opacity}}/>
 		                  <View style={styles.columnText}>
 		                  	<Text style={{fontSize:20, color: '#F79256', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.achievement} </Text>
-		                    <Text style={{fontSize:16, color: '#646363', fontFamily: 'Gill Sans'}}> Last progress on {"November "}{memory.date} </Text>
+		                    <Text style={{fontSize:16, color: '#646363', fontFamily: 'Gill Sans'}}>{getText(memory.opacity, memory.date)}</Text>
 		                    <View style={styles.pillFrame}>
-		                    	<View style={{backgroundColor:colorMap.get(memory.goalChosen), width:'100%', alignItems: 'center', borderRadius:25}}>
+		                    	<View style={{backgroundColor:memory.color, width:'100%', alignItems: 'center', borderRadius:25}}>
 		                    		<Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goalChosen.toUpperCase()} </Text>
 		                    	</View>
 		                    </View>

@@ -185,6 +185,72 @@ export default StyleSheet.create({
   pillFrame: {
     paddingTop: 3,
     width: 150,
+  },
+
+  columnView: {
+    marginTop: 10,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+
+  spacing: {
+    marginTop: 50,
+  }, 
+
+  spacing_1: {
+    marginTop: 100,
+  },
+
+  largeText: {
+    marginTop: 20,
+    fontSize:20, 
+    color: 'gray', 
+    paddingVertical: 0, 
+    fontFamily: 'Gill Sans',
+    textAlign: 'center'
+  },
+
+  horizontalFrame: {
+    marginTop: 10,
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-around',
+  },
+
+  dot: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#E5E5E5',
+    borderRadius: 50,
+    alignItems: 'center',
+    color: 'white',
+    fontFamily: 'Gill Sans',
+    fontSize:30, 
+  },
+
+  whiteText: {
+    color: 'white',
+    fontFamily: 'Gill Sans',
+    fontSize: 20, 
+  },
+
+  centerColumn: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+
+  grayText: {
+    color: 'gray',
+    fontFamily: 'Gill Sans',
+    fontSize: 15,
+  },
+
+  smallText: {
+    fontSize: 12,
+    color: 'gray',
+    fontFamily: 'Gill Sans',
   }
 
 });
