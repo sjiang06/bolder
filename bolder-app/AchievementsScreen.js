@@ -10,57 +10,65 @@ import {createStackNavigator, createAppContainer, createBottomTabNavigator} from
 import { Ionicons } from '@expo/vector-icons';
 import styles from './src/stylesheet'
 
+
+var colors = ['#FE938C', '#59E992', '#56AAF7', '#F79256'];
+
+function getColor() {
+	return colors[getRandomInt(colors.length)];
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
-var PublicSpeakingGoals = ["Self Confidence", "Pacing", "Memorization", "Stuttering"];
-var MakingNewFriendsGoals = ["Asking Questions", "Introducing Self", "Initiating Hangouts", "Being Vulnerable"];
-var TalkingToCrushGoals = ["Texting first", "Planning hangouts", "Physical Affection", "Asking Questions"];
+function getRandomPercentage() {
+	return 0.40 + 0.25 * (Math.floor(Math.random() * Math.floor(4)));
+}
+
+var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush", 'Presentation'];
+var PublicSpeakingGoals = ["Pacing", "Stuttering"];
+var MakingNewFriendsGoals = ["Conversation"];
+var TalkingToCrushGoals = ["Confidence"];
+var PresentationGoals = ["Projection"]
 const goalMap = new Map();
 goalMap.set(SKILLS[0], PublicSpeakingGoals);
 goalMap.set(SKILLS[1], MakingNewFriendsGoals);
 goalMap.set(SKILLS[2], TalkingToCrushGoals);
+goalMap.set(SKILLS[3], PresentationGoals);
 
+var achievementMap = new Map([
+	['Stuttering',['Say "Um" 50% Less', 'Pause between Sentences', 'Make a Mental Roadmap']], 
+	['Pacing',['Slow Pace by 20%', 'Make Eye Contact']], 
+	['Confidence',['10 Day Eye Contact Streak']],
+	['Conversation',['Come Up with 5 Topics']],
+	['Projection', ['Increase Your Volume by 50%']]
+	]);
 
-const skillMap = new Map();
-var skill0Arr = [];
-skillMap.set(SKILLS[0], skill0Arr);
-var skill1Arr = [];
-skillMap.set(SKILLS[1], skill1Arr);
-var skill2Arr = [];
-skillMap.set(SKILLS[2], skill2Arr);
+var colorMap = new Map([
+	['Stuttering','#FE938C'],
+	['Pacing','#59E992'],
+	['Confidence','#56AAF7'],
+	['Conversation','#F79256'],
+	['Projection', '#FE938C']
+	]);
 
 var MEMORIES = [];
 var count;
 
-var SKILL_OPTIONS = ["All"];
-for(count = 0; count < SKILLS.size; count++) {
-  SKILL_OPTIONS.push(SKILLS[count]);
-}
 
-for(count = 0; count < 10; count++) {
-  var skillArr = [];
-  var skillChosen = SKILLS[getRandomInt(goalMap.size)];
-  var goalsArr = [];
-  var skillArr = goalMap.get(skillChosen);
-  var i;
-  for(i = 0; i < 2; i++){
-    var elem = {
-      goalTitle: skillArr[getRandomInt(skillArr.length)],
-      index: i,
-    }
-    goalsArr.push(elem);
-  };
+for(count = 0; count < goalMap.size; count++) {
+  var skillChosen = SKILLS[count];
+  var goals = goalMap.get(skillChosen);
+  var goalChosen = goals[getRandomInt(goals.length)];
+  var achievements = achievementMap.get(goalChosen);
+  var achievementChosen = achievements[getRandomInt(achievements.length)];
   var mem = {
     index: count,
-    title: "PENDING",
-    date: getRandomInt(31),
+    date: getRandomInt(31) + 1,
     skill: skillChosen,
-    goals: goalsArr,
+    goalChosen: goalChosen,
+    achievement: achievementChosen,
   };
-  skillMap.get(mem.skill).push(mem.index);
   MEMORIES.push(mem);
 };
 
@@ -80,12 +88,12 @@ export default class AchievementsScreen extends Component {
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
-		          	  <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
 				          <View style={styles.viewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
-				      <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
+				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsScreen')}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
 			          	</View>
@@ -93,21 +101,25 @@ export default class AchievementsScreen extends Component {
 			        </View>
 			        <View style={styles.searchBarView}>
 			        	<View style={styles.searchBar}>
-			        		<Ionicons color='#B6B4B4' name="ios-search" size={25}/>
+			        		<Ionicons color='#00b2ca' name="ios-search" size={35}/>
 			        	</View>
 			        </View>
 		        <ScrollView vertical={true} fillViewPort="true" contentContainerStyle={styles.scrollstyle}>
 		          <ImageContainer>
 		            {MEMORIES.map((memory, index) => (
 		              <TouchableOpacity 
-		                onPress={() => this.props.navigation.navigate('RecordingDetails', memory)}
+		                onPress={() => this.props.navigation.navigate('Home')}
 		                key={index}>
-		                <View style={{flexDirection:'row'}}>
-		                  <Image source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}} key ={index} />
-		                  <View style={{flexDirection:'column'}}>
-		                    <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{memory.date} </Text>
-		                    <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.skill} </Text>
-		                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goals[0].goalTitle} </Text>
+		                <View style={styles.achievementContainer}>
+		                  <Ionicons color='#FE938C' name="ios-star" size={75} style={{marginRight:20, opacity:getRandomPercentage()}}/>
+		                  <View style={styles.columnText}>
+		                  	<Text style={{fontSize:20, color: '#F79256', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.achievement} </Text>
+		                    <Text style={{fontSize:16, color: '#646363', fontFamily: 'Gill Sans'}}> Last progress on {"November "}{memory.date} </Text>
+		                    <View style={styles.pillFrame}>
+		                    	<View style={{backgroundColor:colorMap.get(memory.goalChosen), width:'100%', alignItems: 'center', borderRadius:25}}>
+		                    		<Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goalChosen.toUpperCase()} </Text>
+		                    	</View>
+		                    </View>
 		                  </View>
 		                </View>
 		              </TouchableOpacity>
