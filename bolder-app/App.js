@@ -244,7 +244,7 @@ for(count = 0; count < 4; count++) {
   var mem = {
     index: count,
     title: tit,
-    date: getRandomInt(31),
+    date: getRandomInt(31) + 1,
     skill: skillChosen,
     goal: goal,
   };

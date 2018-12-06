@@ -79,10 +79,10 @@ export default class HomeScreen extends React.Component {
                   goalChosen: 'SET GOAL',
                   color: colorMap.get(chosenSkill),
                 }})}>
-	        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center', position: 'absolute'}}>
-	          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', top: 150, borderWidth:3, borderColor: 'white'}}>
+	        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center'}}>
+	          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
 	            <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-	            <Text style={{fontSize:20, width: 130, textAlign: 'center', color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
+	            <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
 	          </View>
 	        </View>
 	    </TouchableOpacity>
