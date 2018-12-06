@@ -121,7 +121,12 @@ class RecordingsScreen extends React.Component {
                 <View style={{flexDirection:'column'}}>
                     <Text style={{fontSize:20, color: '#000000', fontFamily: 'Gill Sans'}}> {MEMORIES[0].skill} </Text>
                     <Text style={{fontSize:20, color: '#FBD1A2', paddingVertical: 10,fontFamily: 'Gill Sans'}}> {"November "}{MEMORIES[0].date} </Text>
-                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 10, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
+                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 10, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goals[0].goalTitle} </Text>
+                    <View style={styles.pillFrame}>
+                      <View style={{backgroundColor:memory.color, width:'100%', alignItems: 'center', borderRadius:25}}>
+                        <Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
+                      </View>
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>
@@ -274,6 +279,9 @@ goalMap.set(SKILLS[0], PublicSpeakingGoals);
 goalMap.set(SKILLS[1], MakingNewFriendsGoals);
 goalMap.set(SKILLS[2], TalkingToCrushGoals);
 
+var titles = ['Talking with Sarah', 'Science Fair', 'Speech and Debate',
+              'Lunch with Jack'];
+
 
 const skillMap = new Map();
 var skill0Arr = [];
@@ -295,7 +303,7 @@ for(count = 0; count < SKILLS.size; count++) {
   SKILL_OPTIONS.push(SKILLS[count]);
 }
 
-for(count = 0; count < 10; count++) {
+for(count = 0; count < 5; count++) {
   var skillArr = [];
   var skillChosen = SKILLS[getRandomInt(goalMap.size)];
   var goalsArr = [];
