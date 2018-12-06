@@ -17,7 +17,6 @@ import SyncScreen from './SyncScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
 import NewRecordingScreen from './NewRecordingScreen.js';
-import SelectDeviceScreen from './SelectDeviceScreen.js';
 
 const ImageContainer = styled.View`
   display: flex;
@@ -293,7 +292,6 @@ const RootStack = createStackNavigator(
     HeadphoneScreen: HeadphoneScreen,
     SyncScreen: SyncScreen,
     NewRecordingScreen: NewRecordingScreen,
-    DeviceScreen: SelectDeviceScreen
   },
   {
     initialRouteName: 'HomeScreen',
