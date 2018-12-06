@@ -28,7 +28,7 @@ export default class PracticeScreen extends Component {
 			        	paddingRight: 20}}> {"Good job with always initiating the conversation first! Now try to make eye contact when speaking to the other person."}
 			        	</Text>
 			        <View style={{height: 150, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}}>
-				        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
+				        <TouchableOpacity onPress={()=>this.props.navigation.navigate('HeadphoneScreen')}>
 						          <View style={styles.pillButton}>
 						          		<View style={{flexDirection: 'row'}}>
 						          			<Ionicons name="md-headset" color='white' size={25}/>
