@@ -48,7 +48,7 @@ export default class PracticeScreen extends Component {
 						          		</View>
 						          </View>
 				      	</TouchableOpacity>
-				      	 <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList', {goal:params.params.goalChosen})}>
+				      	 <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList', {goal:params.params.goalChosen, color:params.params.color})}>
 						          <View style={styles.pillButton}>
 						          		<View style={{flexDirection: 'row'}}>
 						          			<Ionicons name="ios-star-outline" color='white' size={25}/>

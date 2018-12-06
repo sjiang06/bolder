@@ -117,9 +117,11 @@ function getStarIcon(opacity) {
 	}
 }
 
-function setMemories(goal) {
+function setMemories(goal, color) {
 	for (var key in Object.keys(MEMORIES)) {
 		MEMORIES[key].goalChosen = goal;
+		console.log(colorMap.get("Stuttering"));
+		MEMORIES[key].color = color;
 	}
 }
 
@@ -127,6 +129,7 @@ function setRandomMemories() {
 	for (var key in Object.keys(MEMORIES)) {
 		var goals = goalMap.get(MEMORIES[key].skill);
 		MEMORIES[key].goalChosen = goals[getRandomInt(goals.length)];
+		MEMORIES[key].color = colorMap.get(MEMORIES[key].goalChosen);
 	}
 }
 
@@ -134,7 +137,7 @@ export default class AchievementsScreen extends Component {
 	render() {
 		const { params } = this.props.navigation.state;
 		if (params != null) {
-			setMemories(params.goal);
+			setMemories(params.goal, params.color);
 		} else {
 			console.log('hello world');
 			setRandomMemories();
