@@ -295,6 +295,20 @@ export default StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     alignItems: 'center',
-  }
+  },
 
+  phonePickerView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  phonePicker: {
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    margin: 20,
+    borderRadius: 10,
+  }
 });

@@ -13,12 +13,14 @@ import CalendarScreen from './CalendarScreen.js';
 import WeekScreen from './WeekScreen.js';
 import PracticeScreen from './PracticeScreen.js';
 import HeadphoneScreen from './HeadphoneScreen.js';
+import SyncingScreen from './SyncingScreen.js';
 import styles from './src/stylesheet';
 
 class HomeScreen extends React.Component {
   render() {
     const resizeMode = 'cover';
     return (
+
       <View style={{ flex: 1}}>
         <View
           style={{
@@ -337,10 +339,11 @@ const RootStack = createStackNavigator(
     CalendarView: CalendarScreen,
     WeekScreen: WeekScreen,
     PracticeScreen: PracticeScreen,
-    HeadphoneScreen: HeadphoneScreen
+    HeadphoneScreen: HeadphoneScreen,
+    SyncingScreen: SyncingScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'SyncingScreen',
     headerMode: 'none',
     navigationOptions: {
       headerVisible: false,
@@ -351,12 +354,18 @@ const RootStack = createStackNavigator(
 const TabBar = createBottomTabNavigator(
   {
     Home: {
-      screen:RootStack,
+      screen:HomeScreen,
       navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
           <Ionicons color='white' name="ios-home" size={40}/>
         )
+      },
+    },
+    SyncingScreen: {
+      screen:SyncingScreen,
+      navigationOptions: {
+        tabBarVisible: false,
       },
     },
     Help: {
@@ -371,7 +380,7 @@ const TabBar = createBottomTabNavigator(
   },
     {
     tintColor: '#ffffff',
-    initialRouteName: 'Home',
+    initialRouteName: 'SyncingScreen',
     swipeEnabled: false,
     backBehavior: 'initialRoute',
     tabBarOptions: {
@@ -381,6 +390,7 @@ const TabBar = createBottomTabNavigator(
       },
       activeTintColor: '#ffffff',
     },
+
     header:null,
   }
 );
