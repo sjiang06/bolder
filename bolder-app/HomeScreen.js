@@ -13,6 +13,10 @@ import styles from './src/stylesheet';
 
 
 export default class HomeScreen extends React.Component {
+  constructor() {
+  	var chosenSkill = SKILLS[getRandomInt(SKILLS.length)];
+  }
+
   render() {
     const resizeMode = 'cover';
     return (
@@ -69,13 +73,18 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
           </View>
         </TouchableOpacity>
-
-        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center', position: 'absolute'}}>
-          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', top: 130, borderWidth:3, borderColor: 'white'}}>
-            <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-            <Text style={{fontSize:20, width: 130, textAlign: 'center', color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
-          </View>
-        </View>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewRecordingScreen', {title:'[New Recording]', date:'5', params:{
+                  skill: chosenSkill,
+                  goalChosen: 'SET GOAL',
+                  color: colorMap.get(chosenSkill),
+                }})}>
+	        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center', position: 'absolute'}}>
+	          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', top: 150, borderWidth:3, borderColor: 'white'}}>
+	            <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+	            <Text style={{fontSize:20, width: 130, textAlign: 'center', color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
+	          </View>
+	        </View>
+	    </TouchableOpacity>
 
       </View>
         <Button
@@ -87,3 +96,20 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+var colorMap = new Map([
+  ['Stuttering','#FE938C'],
+  ['Pacing','#59E992'],
+  ['Confidence','#56AAF7'],
+  ['Conversation','#F79256'],
+  ['Projection', '#FE938C'],
+  ['Public Speaking', '#FE938C'],
+  ['Making New Friends','#59E992'],
+  ['Talking to Crush','#56AAF7'],
+  ]);
+
+var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
