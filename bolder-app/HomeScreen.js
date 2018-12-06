@@ -74,7 +74,7 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewRecordingScreen', {title:'[New Recording]', date:'5', params:{
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:'[New Recording]', date:'5', params:{
                   skill: this.state.skill,
                   goalChosen: 'SET GOAL',
                   color: colorMap.get(this.state.skill),
