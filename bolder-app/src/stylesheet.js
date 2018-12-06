@@ -101,6 +101,7 @@ export default StyleSheet.create({
   iconSmall: {
     width: 100,
     height: 100,
+    marginRight: 20
   },
   scrollstyle: {
     marginTop: 0,
@@ -189,7 +190,8 @@ export default StyleSheet.create({
 
   columnText: {
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'left'
   },
 
   pillFrame: {
