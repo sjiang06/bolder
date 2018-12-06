@@ -220,10 +220,16 @@ class Draggable extends Component {
   }
 }
 
+function setText(params, text) {
+  MEMORIES[params.id].title = text;
+}
+
+var textboxText = 'Enter some text';
+
 class RecordingDetailsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: 'Useless Placeholder' };
+    this.state = { text: textboxText };
   }
   render() {
     const { params } = this.props.navigation.state;
@@ -233,32 +239,16 @@ class RecordingDetailsScreen extends React.Component {
     return (
       <View style={{backgroundColor: '#C8E0E3', flex: 1, alignItems: 'center'}}>
 
-        <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans'}}> {params.title} </Text>
+        <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans'}}> {textboxText} </Text>
         <Text style={{fontSize:14, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{params.date} </Text>
         <Image style={{width: 150, height: 150}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
         <Text style={{textAlign: 'center', fontSize:14, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, paddingRight: 20}}> {"Good job with "}{(params.goals[0].goalTitle).toLowerCase()}{"! Here are some things we can continue working on: "} </Text>
-        <Text> {params.skill} </Text>
-        <View style={styles.container}>
-        <View style={styles.dropZone}>
-          <Text style={styles.text}>Drop them here!</Text>
-        </View>
-        <View style={styles.ballContainer} />
-        <Text> {params.goals[1].goalTitle} </Text>
-        <View style={styles.row}>
-          <Draggable />
-          <Draggable />
-          <Draggable />
-          <Draggable />
-          <Draggable />
-        </View>
-      </View> 
         <TextInput
           style={{height:40, position: 'absolute', top: 100, left: 100}}
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(text) => {this.setState({text}); textboxText = text; console.log(textboxText);}}
           value={this.state.text}
         />
-
-      <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', position: 'absolute', top: 50, left: 100}}> {MEMORIES[id].title} </Text>
+        <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', position: 'absolute', top: 50, left: 100}}> {textboxText} </Text>
       </View>
 
     );
