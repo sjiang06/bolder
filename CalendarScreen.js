@@ -92,7 +92,7 @@ export default class CalendarScreen extends Component {
 				    	<CalendarPicker 
 				    		onDateChange={(date)=> {
 				    			if(isAllowedDate(date)) {
-				    				this.props.navigation.navigate('WeekScreen', onDateChange(date))} 
+				    				this.props.navigation.navigate('WeekScreen', {params:onDateChange(date), mem:params})} 
 				    			} 
 				    		}
 				    		selectedDayColor='#00b2ca' 

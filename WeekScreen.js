@@ -31,7 +31,9 @@ function getStarIcon(opacity) {
 export default class WeekScreen extends Component {
 	render() {
 		const { params } = this.props.navigation.state.params;
-		const mem = this.props.navigation.state.mem;
+		console.log(JSON.stringify(params))
+		const obj = this.props.navigation.state;
+		const mem = obj.params.mem;
 		return (
 			<View styles={styles.screenFrame}>
 				<View style={[styles.buttonFrame, styles.spacing]}>
@@ -41,7 +43,7 @@ export default class WeekScreen extends Component {
 				          </View>
 				      </TouchableOpacity>
 
-				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('Home', mem)}>
+				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('CalendarView', mem)}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
 			          	</View>
