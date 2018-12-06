@@ -121,7 +121,11 @@ class RecordingsScreen extends React.Component {
     return (
       <View style={{paddingLeft: 30, paddingVertical: 30, marginTop:40}}>
         <Text style={{fontSize: 25, color: '#00B2CA', fontFamily: 'Gill Sans'}}>NEW RECORDING!</Text>
-        <TouchableOpacity style={{marginBottom:10}}>
+        <TouchableOpacity style={{marginBottom:10}} onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:MEMORIES[0].title, date:MEMORIES[0].date, params:{
+                  skill: MEMORIES[0].skill,
+                  goalChosen: MEMORIES[0].goal,
+                  color: colorMap.get(MEMORIES[0].skill),
+                }})}>
           <View style={{flexDirection:'row'}}>
                 <Image style={{width: 130, height: 130, marginRight:10}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>                  
                 <View style={styles.columnText}>
