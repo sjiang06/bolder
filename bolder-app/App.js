@@ -14,6 +14,7 @@ import WeekScreen from './WeekScreen.js';
 import PracticeScreen from './PracticeScreen.js';
 import HeadphoneScreen from './HeadphoneScreen.js';
 import SyncScreen from './SyncScreen.js';
+import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
 
 class HomeScreen extends React.Component {
@@ -85,16 +86,6 @@ class HomeScreen extends React.Component {
             });
           }}
         />
-      </View>
-    );
-  }
-}
-
-export class HelpScreen extends React.Component {
-  render() {
-    return (
-      <View style={{flex:1}}>
-        <Text> Hello world </Text>
       </View>
     );
   }
