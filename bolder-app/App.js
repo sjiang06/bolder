@@ -70,6 +70,7 @@ class HomeScreen extends React.Component {
         
         <TouchableOpacity onPress={() => {
             /* 1. Navigate to the Recordings route with params */
+            console.log('here');
             this.props.navigation.navigate('Recordings');
           }}>
           <View style={styles.columnView}>
@@ -295,7 +296,7 @@ const RootStack = createStackNavigator(
     NewRecordingScreen: NewRecordingScreen,
   },
   {
-    initialRouteName: 'SyncingScreen',
+    initialRouteName: 'HomeScreen',
     headerMode: 'none',
     navigationOptions: {
       headerVisible: false,
@@ -314,12 +315,6 @@ const TabBar = createBottomTabNavigator(
         )
       },
     },
-    SyncingScreen: {
-      screen:SyncingScreen,
-      navigationOptions: {
-        tabBarVisible: false,
-      },
-    },
     Help: {
       screen:HelpScreen,
       navigationOptions: {
@@ -332,7 +327,7 @@ const TabBar = createBottomTabNavigator(
   },
     {
     tintColor: '#ffffff',
-    initialRouteName: 'SyncingScreen',
+    initialRouteName: 'Home',
     swipeEnabled: false,
     backBehavior: 'initialRoute',
     tabBarOptions: {

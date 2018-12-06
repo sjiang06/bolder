@@ -8,6 +8,7 @@ import {Button, View,
   Animated, TextInput} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import styles from './src/stylesheet';
+import CalendarScreen from './CalendarScreen.js';
 
 export default class SyncingScreen extends Component {
 
@@ -40,13 +41,13 @@ export default class SyncingScreen extends Component {
 			          />
 	        	</View>
 	        	<View style={styles.logo}>
-		          <Image source={require('./images/bolder_logo.png')} 
-		          style={{width: 400, height: 200}}/>
+			        <Image source={{uri: 'https://i.ibb.co/QXQkQmB/BOLDERlogo.png'}} 
+			        style={{width: 350, height: 200, alignItems: 'center'}}/>
 		        </View>
 		        <View style={styles.syncingButtonContainer}>
 			        <TouchableOpacity
 			        	style={styles.syncingButton}
-			        	onPress={()=>this.props.navigation.navigate('Home')}
+			        	onPress={()=>this.props.navigation.navigate('HomeScreen')}
 			       	>
 	         			<Text> Sync with earpiece </Text>
 	       			</TouchableOpacity>
