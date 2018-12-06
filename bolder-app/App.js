@@ -307,12 +307,18 @@ const RootStack = createStackNavigator(
 const TabBar = createBottomTabNavigator(
   {
     Home: {
-      screen:HomeScreen,
+      screen:RootStack,
       navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
           <Ionicons color='white' name="ios-home" size={40}/>
         )
+      },
+    },
+    SyncingScreen: {
+      screen:SyncingScreen,
+      navigationOptions: {
+        tabBarVisible: false,
       },
     },
     Help: {
@@ -327,7 +333,7 @@ const TabBar = createBottomTabNavigator(
   },
     {
     tintColor: '#ffffff',
-    initialRouteName: 'Home',
+    initialRouteName: 'SyncingScreen',
     swipeEnabled: false,
     backBehavior: 'initialRoute',
     tabBarOptions: {
