@@ -163,6 +163,15 @@ export default StyleSheet.create({
     marginTop: 0
   },
 
+  calendarSearchBarView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 0,
+    width: '100%',
+    height: 35,
+    marginTop: 120
+  },
+
   searchBar: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
