@@ -8,7 +8,7 @@ export default StyleSheet.create({
     width: '100%',
     height: 100,
     marginBottom: 0,
-    marginTop: 75,
+    top: 50,
   },
   container: {
     flex: 1,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     width: 180,
     height: 180,
     position: 'absolute',
-    top: -120,
+    top: -90,
     left: -180
   },
   buttonRight: {
@@ -60,7 +60,7 @@ export default StyleSheet.create({
     width: 180,
     height: 180,
     position: 'absolute',
-    top: -120,
+    top: -90,
     right: -180
   },
   iconRight: {
@@ -69,7 +69,7 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     position: 'absolute',
-    top: -90,
+    top: -60,
     right: -150
   },
   iconLeft: {
@@ -78,12 +78,12 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     position: 'absolute',
-    top: -90,
+    top: -60,
     left: -150
   },
   textLeft: {
     position: 'absolute',
-    top: 50,
+    top: 80,
     right: -160,
     fontFamily: 'Gill Sans',
     fontSize: 20,
@@ -91,7 +91,7 @@ export default StyleSheet.create({
   },
   textRight: {
     position: 'absolute',
-    top: 50,
+    top: 80,
     left: -170,
     fontFamily: 'Gill Sans',
     fontSize: 20,

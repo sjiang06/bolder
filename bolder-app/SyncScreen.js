@@ -14,12 +14,10 @@ import { App } from './App.js';
 export default class SyncScreen extends Component {
 	render() {
 	    return (
-	    	<TouchableOpacity onPress={()=>this.props.navigation.navigate('Home')}>
-		    	<View style={{height:'100%', width: '100%'}}>
-				        <Image source={require('./images/bolder_sync.png')} 
-	          				style={{width: '100%', height: '100%'}}/>	        
-			    </View>
-			</TouchableOpacity>
+	    	<View style={{height:'100%', width: '100%'}}>
+			        <Image source={require('./images/bolder_sync.png')} 
+	      				style={{width: '100%', height: '100%'}}/>	        
+		    </View>
 		);
 	}
 };

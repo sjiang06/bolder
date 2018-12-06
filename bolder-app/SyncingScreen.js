@@ -44,14 +44,35 @@ export default class SyncingScreen extends Component {
 			        <Image source={{uri: 'https://i.ibb.co/QXQkQmB/BOLDERlogo.png'}} 
 			        style={{width: 350, height: 200, alignItems: 'center'}}/>
 		        </View>
-		        <View style={styles.syncingButtonContainer}>
-			        <TouchableOpacity
-			        	style={styles.syncingButton}
-			        	onPress={()=>this.props.navigation.navigate('HomeScreen')}
-			       	>
-	         			<Text> Sync with earpiece </Text>
-	       			</TouchableOpacity>
-       			</View>
+		        <View style={{top: 200, width:'100%', flexDirection:'column', alignItems:'center'}}>
+			        <Text style={{fontFamily: 'Gill Sans',
+							    fontSize: 30,
+							    color: '#646363',
+							    textAlign: 'center',
+							    alignItems: 'center',}}> Select earpiece to sync </Text>
+			        <View style={{flexDirection: 'column',
+						    justifyContent: 'center',
+						    width: 300,
+						    height: 75,
+						    backgroundColor: '#00b2ca',
+						    borderRadius: 25,
+						    borderWidth: 2,
+						    borderColor: 'white',
+						    alignItems: 'center',
+							marginTop:20}}>
+				        <TouchableOpacity
+				        	onPress={()=>this.props.navigation.navigate('HomeScreen')}
+				       	>
+		         			<Text style={{fontFamily: 'Gill Sans',
+							    fontSize: 23,
+							    color: 'white',
+							    textAlign: 'center',
+							    alignItems: 'center',}}
+							> Minh-An's BOLDer earpiece </Text>
+		       			</TouchableOpacity>
+	       			</View>
+
+	       		</View>
 		        
 	        </View>        
 	    );

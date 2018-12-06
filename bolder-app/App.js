@@ -17,6 +17,7 @@ import SyncingScreen from './SyncingScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
 import NewRecordingScreen from './NewRecordingScreen.js';
+import SyncScreen from './SyncScreen.js';
 
 const ImageContainer = styled.View`
   display: flex;
@@ -64,8 +65,29 @@ class HomeScreen extends React.Component {
          
          <View style={styles.logo}>
           <Image source={{uri: 'https://i.ibb.co/QXQkQmB/BOLDERlogo.png'}} 
-          style={{width: 350, height: 200, alignItems: 'center'}}/>
+          style={{top:-40,width: 350, height: 200, alignItems: 'center'}}/>
         </View>
+        <View style={{top:80, flexDirection:'column', alignItems:'center'}}>
+        <View style={{flexDirection: 'column',
+                justifyContent: 'center',
+                width: 300,
+                height: 75,
+                backgroundColor: 'white',
+                borderRadius: 25,
+                borderWidth: 2,
+                borderColor: 'white',
+                alignItems: 'center',
+              marginTop:20}}>
+                
+              <Text style={{fontFamily: 'Gill Sans',
+              fontSize: 35,
+              color: '#00b2ca',
+              textAlign: 'center',
+              alignItems: 'center',}}
+          > Hi, Minh-An! </Text>
+          </View>
+          </View>
+
         <View style={styles.container}>
         
         <TouchableOpacity onPress={() => {
@@ -293,6 +315,7 @@ const RootStack = createStackNavigator(
     HeadphoneScreen: HeadphoneScreen,
     SyncingScreen: SyncingScreen,
     NewRecordingScreen: NewRecordingScreen,
+    SyncScreen: SyncScreen
   },
   {
     initialRouteName: 'HomeScreen',
@@ -305,6 +328,15 @@ const RootStack = createStackNavigator(
 
 const TabBar = createBottomTabNavigator(
   {
+    SyncingScreen: {
+      screen:SyncingScreen,
+      navigationOptions: {
+        tabBarVisible: false,
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons color='white' name="ios-bluetooth" size={40}/>
+        )
+      },
+    },
     Home: {
       screen:RootStack,
       navigationOptions: {
@@ -312,12 +344,6 @@ const TabBar = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Ionicons color='white' name="ios-home" size={40}/>
         )
-      },
-    },
-    SyncingScreen: {
-      screen:SyncingScreen,
-      navigationOptions: {
-        tabBarVisible: false,
       },
     },
     Help: {
