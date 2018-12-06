@@ -109,7 +109,7 @@ export default class AchievementsScreen extends Component {
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
-		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList', MEMORIES)}>
+		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
 				          <View style={styles.viewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
@@ -129,7 +129,7 @@ export default class AchievementsScreen extends Component {
 		          <ImageContainer>
 		            {MEMORIES.map((memory, index) => (
 		              <TouchableOpacity 
-		                onPress={() => this.props.navigation.navigate('WeekScreen', memory)}
+		                onPress={() => this.props.navigation.navigate('WeekScreen', {params: memory, mem: MEMORIES})}
 		                key={index}>
 		                <View style={styles.achievementContainer}>
 		                  <Ionicons color={memory.color} name={getStarIcon(memory.opacity)} size={75} style={{marginRight:20, opacity:memory.opacity}}/>
