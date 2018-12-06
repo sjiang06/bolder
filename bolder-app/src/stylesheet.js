@@ -298,6 +298,18 @@ export default StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     alignItems: 'center',
-  }
+  },
 
+  syncingButtonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10
+  },
+
+  syncingButton: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    borderRadius: 10,
+  }
 });

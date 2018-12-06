@@ -13,7 +13,7 @@ import CalendarScreen from './CalendarScreen.js';
 import WeekScreen from './WeekScreen.js';
 import PracticeScreen from './PracticeScreen.js';
 import HeadphoneScreen from './HeadphoneScreen.js';
-import SyncScreen from './SyncScreen.js';
+import SyncingScreen from './SyncingScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
 import NewRecordingScreen from './NewRecordingScreen.js';
@@ -40,6 +40,7 @@ class HomeScreen extends React.Component {
   render() {
     const resizeMode = 'cover';
     return (
+
       <View style={{ flex: 1}}>
         <View
           style={{
@@ -290,7 +291,7 @@ const RootStack = createStackNavigator(
     WeekScreen: WeekScreen,
     PracticeScreen: PracticeScreen,
     HeadphoneScreen: HeadphoneScreen,
-    SyncScreen: SyncScreen,
+    SyncingScreen: SyncingScreen,
     NewRecordingScreen: NewRecordingScreen,
   },
   {
@@ -313,6 +314,12 @@ const TabBar = createBottomTabNavigator(
         )
       },
     },
+    SyncingScreen: {
+      screen:SyncingScreen,
+      navigationOptions: {
+        tabBarVisible: false,
+      },
+    },
     Help: {
       screen:HelpScreen,
       navigationOptions: {
@@ -325,7 +332,7 @@ const TabBar = createBottomTabNavigator(
   },
     {
     tintColor: '#ffffff',
-    initialRouteName: 'Home',
+    initialRouteName: 'SyncingScreen',
     swipeEnabled: false,
     backBehavior: 'initialRoute',
     tabBarOptions: {
@@ -335,6 +342,7 @@ const TabBar = createBottomTabNavigator(
       },
       activeTintColor: '#ffffff',
     },
+
     header:null,
   }
 );
