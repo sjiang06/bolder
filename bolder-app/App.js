@@ -16,16 +16,89 @@ import HeadphoneScreen from './HeadphoneScreen.js';
 import SyncScreen from './SyncScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
-import HomeScreen from './HomeScreen.js';
 import NewRecordingScreen from './NewRecordingScreen.js';
-
-
-
 
 const ImageContainer = styled.View`
   display: flex;
   flex-direction: column;
 `;
+
+class HomeScreen extends Component {
+  render() {
+    const resizeMode = 'cover';
+    return (
+      <View style={{ flex: 1}}>
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <Image
+            style={{
+              flex: 1,
+              resizeMode,
+            }}
+            source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
+          />
+        </View>
+
+
+         
+         <View style={styles.logo}>
+          <Image source={require('./images/bolder_logo.png')} 
+          style={{width: 400, height: 200}}/>
+        </View>
+        <View style={styles.container}>
+        
+        <TouchableOpacity onPress={() => {
+            /* 1. Navigate to the Recordings route with params */
+            this.props.navigation.navigate('Recordings');
+          }}>
+          <View style={styles.columnView}>
+            <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
+              resizeMode="contain"
+           />
+            <Image style={styles.iconLeft} source={{uri: 'https://i.ibb.co/RHhhSgB/noun-Playlist-972339.png'}} 
+              resizeMode="contain"
+            />
+            <Text style={styles.textRight}> RECORDINGS </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
+          <View>
+            <Image style={styles.buttonRight} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
+              resizeMode="contain"
+            />
+            <Image style={styles.iconRight} source={{uri: 'https://i.ibb.co/SJzVtRf/achievements.png'}} 
+              resizeMode="contain"
+            />
+            <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:MEMORIES[0].title, date:MEMORIES[0].date, params:{
+                  skill: MEMORIES[0].skill,
+                  goalChosen: MEMORIES[0].goal,
+                  color: colorMap.get(MEMORIES[0].skill),
+                }})}>
+          <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center'}}>
+            <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
+              <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+              <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
+            </View>
+          </View>
+      </TouchableOpacity>
+
+      </View>
+      </View>
+    );
+  }
+}
+
 
 var colorMap = new Map([
   ['Stuttering','#FE938C'],
@@ -38,6 +111,7 @@ var colorMap = new Map([
   ['Talking to Crush','#56AAF7'],
   ]);
 
+var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
 
 class RecordingsScreen extends React.Component {
   render() {
@@ -46,13 +120,13 @@ class RecordingsScreen extends React.Component {
 
     return (
       <View style={{paddingLeft: 30, paddingVertical: 30, marginTop:40}}>
-        <Text style={{fontSize: 25, color: '#00B2CA', fontFamily: 'Gill Sans'}}>RECENT</Text>
+        <Text style={{fontSize: 25, color: '#00B2CA', fontFamily: 'Gill Sans'}}>NEW RECORDING!</Text>
         <TouchableOpacity style={{marginBottom:10}}>
           <View style={{flexDirection:'row'}}>
                 <Image style={{width: 130, height: 130, marginRight:10}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>                  
                 <View style={styles.columnText}>
-                    <Text style={{fontSize:23, color: '#F79256', fontFamily: 'Gill Sans', textAlign:'left'}}>NEW RECORDING</Text>
-                    <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans', textAlign:'left'}}> {MEMORIES[0].skill} </Text>
+                    <Text style={{fontSize:24, width:200, color: '#646363', fontFamily: 'Gill Sans', textAlign:'left'}}> {MEMORIES[0].title} </Text>
+                    <Text style={{fontSize:20, color: colorMap.get(MEMORIES[0].skill), fontFamily: 'Gill Sans', textAlign:'left'}}> {MEMORIES[0].skill} </Text>
                     <Text style={{fontSize:20, color: '#FBD1A2', fontFamily: 'Gill Sans', textAlign:'left'}}> {"November "}{MEMORIES[0].date} </Text>
                 </View>
             </View>
@@ -64,7 +138,7 @@ class RecordingsScreen extends React.Component {
               </View>
         <ScrollView style={{marginTop:10}} vertical={true} fillViewPort="true" contentContainerStyle={styles.scrollstyle}>
           <ImageContainer>
-            {MEMORIES.map((memory, index) => (
+            {MEMORIES.slice(1).map((memory, index) => (
               <TouchableOpacity 
                 onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:memory.title, date:memory.date, params:{
                   skill: memory.skill,
@@ -77,7 +151,7 @@ class RecordingsScreen extends React.Component {
                   <View style={styles.columnText}>
                     <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {memory.title} </Text>
                     <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {"November "}{memory.date}</Text>
-                    <Text style={{fontSize:20, color: colorMap.get(memory.skill), fontFamily: 'Gill Sans'}}> {memory.title} </Text>
+                    <Text style={{fontSize:20, color: colorMap.get(memory.skill), fontFamily: 'Gill Sans'}}> {memory.skill} </Text>
 
                   </View>
                 </View>
@@ -235,7 +309,7 @@ for(count = 0; count < SKILLS.size; count++) {
   SKILL_OPTIONS.push(SKILLS[count]);
 }
 
-for(count = 0; count < 4; count++) {
+for(count = 0; count < 6; count++) {
   var skillArr = [];
   var skillChosen = SKILLS[getRandomInt(goalMap.size)];
   var goalsArr = [];
