@@ -59,15 +59,27 @@ var MEMORIES = [];
 var count;
 
 
+function getRandomDate() {
+	var randDate = getRandomInt(24) + 7;
+	for (var i = 0; i < MEMORIES.length; i++) {
+		while (MEMORIES[i].date === randDate) {
+			randDate = getRandomInt(24) + 7;
+		}
+	}
+	return randDate;
+}
+
+
 for(count = 0; count < goalMap.size; count++) {
   var skillChosen = SKILLS[count];
   var goals = goalMap.get(skillChosen);
   var goalChosen = goals[getRandomInt(goals.length)];
   var achievements = achievementMap.get(goalChosen);
   var achievementChosen = achievements[getRandomInt(achievements.length)];
+  var randDate = getRandomDate();
   var mem = {
     index: count,
-    date: getRandomInt(24) + 7,
+    date: randDate,
     skill: skillChosen,
     goalChosen: goalChosen,
     achievement: achievementChosen,

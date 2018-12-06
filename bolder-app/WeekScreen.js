@@ -40,6 +40,7 @@ export default class WeekScreen extends Component {
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
+
 				      <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('Home', mem)}>
 			          	<View style={styles.viewButtons}>
 			            	<Ionicons color='white' name="ios-calendar" size={50}/>
