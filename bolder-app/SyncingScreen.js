@@ -9,13 +9,6 @@ import {Button, View,
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import styles from './src/stylesheet';
 
-import RNPickerSelect from 'react-native-picker-select';
-//npm install react-native-picker-select
-
-
-
-
-
 export default class SyncingScreen extends Component {
 
 
@@ -50,22 +43,16 @@ export default class SyncingScreen extends Component {
 		          <Image source={require('./images/bolder_logo.png')} 
 		          style={{width: 400, height: 200}}/>
 		        </View>
-		        <View style={styles.phonePickerView}>
-		        	<View style={styles.phonePicker}>
-			        	<RNPickerSelect
-			        		onValueChange={(value) => {
-		                        this.props.navigation.navigate('Home');
-		                    }}
-			        		items={phones}
-			        		placeHolder={{
-			        			label: 'Select a phone',
-			        			value: 'Select a phone',
-			        		}}
-			        	>
-			        	</RNPickerSelect>
-		        	</View>
-		        </View>
+		        <View style={styles.syncingButtonContainer}>
+			        <TouchableOpacity
+			        	style={styles.syncingButton}
+			        	onPress={()=>this.props.navigation.navigate('Home')}
+			       	>
+	         			<Text> Sync with earpiece </Text>
+	       			</TouchableOpacity>
+       			</View>
 		        
-	        </View>        );
+	        </View>        
+	    );
 	}
 }

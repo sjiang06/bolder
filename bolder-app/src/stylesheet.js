@@ -297,18 +297,16 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  phonePickerView: {
+  syncingButtonContainer: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 10
   },
 
-  phonePicker: {
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    margin: 20,
+  syncingButton: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
     borderRadius: 10,
   }
 });
