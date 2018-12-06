@@ -70,7 +70,6 @@ class HomeScreen extends React.Component {
         
         <TouchableOpacity onPress={() => {
             /* 1. Navigate to the Recordings route with params */
-            console.log('here');
             this.props.navigation.navigate('Recordings');
           }}>
           <View style={styles.columnView}>
