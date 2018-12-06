@@ -14,6 +14,7 @@ import styles from './src/stylesheet';
 
 export default class HomeScreen extends React.Component {
   constructor() {
+  	super();
   	var chosenSkill = SKILLS[getRandomInt(SKILLS.length)];
   }
 
