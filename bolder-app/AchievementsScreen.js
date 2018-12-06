@@ -117,8 +117,29 @@ function getStarIcon(opacity) {
 	}
 }
 
+function setMemories(goal) {
+	for (var key in Object.keys(MEMORIES)) {
+		MEMORIES[key].goalChosen = goal;
+	}
+}
+
+function setRandomMemories() {
+	for (var key in Object.keys(MEMORIES)) {
+		var goals = goalMap.get(MEMORIES[key].skill);
+		MEMORIES[key].goalChosen = goals[getRandomInt(goals.length)];
+	}
+}
+
 export default class AchievementsScreen extends Component {
 	render() {
+		const { params } = this.props.navigation.state;
+		if (params != null) {
+			setMemories(params.goal);
+		} else {
+			console.log('hello world');
+			setRandomMemories();
+			console.log(JSON.stringify(MEMORIES));
+		}
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
