@@ -169,9 +169,8 @@ class RecordingsScreen extends React.Component {
                   <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}} key ={index} />
                   <View style={styles.columnText}>
                     <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {memory.title} </Text>
-                    <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {"November "}{memory.date}</Text>
                     <Text style={{fontSize:20, color: colorMap.get(memory.skill), fontFamily: 'Gill Sans'}}> {memory.skill} </Text>
-
+                    <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {"November "}{memory.date}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
