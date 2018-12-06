@@ -13,6 +13,7 @@ import CalendarScreen from './CalendarScreen.js';
 import WeekScreen from './WeekScreen.js';
 import PracticeScreen from './PracticeScreen.js';
 import HeadphoneScreen from './HeadphoneScreen.js';
+import SyncScreen from './SyncScreen.js';
 import styles from './src/stylesheet';
 
 class HomeScreen extends React.Component {
@@ -324,7 +325,8 @@ const RootStack = createStackNavigator(
     CalendarView: CalendarScreen,
     WeekScreen: WeekScreen,
     PracticeScreen: PracticeScreen,
-    HeadphoneScreen: HeadphoneScreen
+    HeadphoneScreen: HeadphoneScreen,
+    SyncScreen: SyncScreen
   },
   {
     initialRouteName: 'Home',

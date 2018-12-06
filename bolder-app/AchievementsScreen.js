@@ -13,6 +13,7 @@ import styles from './src/stylesheet';
 import { WeekScreen } from './WeekScreen.js';
 import { App } from './App.js';
 
+var title = '';
 
 var colors = ['#FE938C', '#59E992', '#56AAF7', '#F79256'];
 
@@ -122,7 +123,7 @@ export default class AchievementsScreen extends Component {
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
 		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
-				          <View style={styles.viewButtons}>
+				          <View style={styles.nonActiveViewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
