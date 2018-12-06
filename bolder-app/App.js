@@ -45,25 +45,24 @@ class RecordingsScreen extends React.Component {
 
 
     return (
-      <View style={{paddingLeft: 30, paddingVertical: 30}}>
-        <Text style={{fontSize: 20, color: '#00B2CA', fontFamily: 'Gill Sans'}}>RECENT</Text>
-        <TouchableOpacity>
+      <View style={{paddingLeft: 30, paddingVertical: 30, marginTop:40}}>
+        <Text style={{fontSize: 25, color: '#00B2CA', fontFamily: 'Gill Sans'}}>RECENT</Text>
+        <TouchableOpacity style={{marginBottom:10}}>
           <View style={{flexDirection:'row'}}>
-            <Image style={{width: 130, height: 130}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>                  
-                <View style={{flexDirection:'column'}}>
-                    <Text style={{fontSize:20, color: '#000000', fontFamily: 'Gill Sans'}}> {MEMORIES[0].skill} </Text>
-                    <Text style={{fontSize:20, color: '#FBD1A2', paddingVertical: 10,fontFamily: 'Gill Sans'}}> {"November "}{MEMORIES[0].date} </Text>
-                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 10, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
-                    <View style={styles.pillFrame}>
-                      <View style={{backgroundColor:colorMap.get(MEMORIES[0].skill), width:'100%', alignItems: 'center', borderRadius:25}}>
-                        <Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
-                      </View>
-                    </View>
+                <Image style={{width: 130, height: 130, marginRight:10}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>                  
+                <View style={styles.columnText}>
+                    <Text style={{fontSize:23, color: '#F79256', fontFamily: 'Gill Sans', textAlign:'left'}}>NEW RECORDING</Text>
+                    <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans', textAlign:'left'}}> {MEMORIES[0].skill} </Text>
+                    <Text style={{fontSize:20, color: '#FBD1A2', fontFamily: 'Gill Sans', textAlign:'left'}}> {"November "}{MEMORIES[0].date} </Text>
                 </View>
             </View>
         </TouchableOpacity>
-        <Text style={{fontSize: 20, color: '#00B2CA', fontFamily: 'Gill Sans'}}>SHOW: </Text>
-        <ScrollView vertical={true} fillViewPort="true" contentContainerStyle={styles.scrollstyle}>
+        <View style={styles.searchBarView}>
+                <View style={styles.searchBar}>
+                  <Ionicons color='#00b2ca' name="ios-search" size={35}/>
+                </View>
+              </View>
+        <ScrollView style={{marginTop:10}} vertical={true} fillViewPort="true" contentContainerStyle={styles.scrollstyle}>
           <ImageContainer>
             {MEMORIES.map((memory, index) => (
               <TouchableOpacity 
@@ -73,12 +72,13 @@ class RecordingsScreen extends React.Component {
                   color: colorMap.get(memory.skill),
                 }})}
                 key={index}>
-                <View style={{flexDirection:'row'}}>
+                <View style={{flexDirection:'row', justifyContent:'flex-start'}}>
                   <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}} key ={index} />
-                  <View style={{flexDirection:'column'}}>
-                    <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{memory.date} </Text>
-                    <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.skill} </Text>
-                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goal} </Text>
+                  <View style={styles.columnText}>
+                    <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {memory.title} </Text>
+                    <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {"November "}{memory.date}</Text>
+                    <Text style={{fontSize:20, color: colorMap.get(memory.skill), fontFamily: 'Gill Sans'}}> {memory.title} </Text>
+
                   </View>
                 </View>
               </TouchableOpacity>
@@ -235,7 +235,7 @@ for(count = 0; count < SKILLS.size; count++) {
   SKILL_OPTIONS.push(SKILLS[count]);
 }
 
-for(count = 0; count < 5; count++) {
+for(count = 0; count < 4; count++) {
   var skillArr = [];
   var skillChosen = SKILLS[getRandomInt(goalMap.size)];
   var goalsArr = [];
@@ -245,7 +245,7 @@ for(count = 0; count < 5; count++) {
   var mem = {
     index: count,
     title: tit,
-    date: getRandomInt(31),
+    date: getRandomInt(31) + 1,
     skill: skillChosen,
     goal: goal,
   };
