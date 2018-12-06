@@ -43,8 +43,8 @@ export default class HomeScreen extends React.Component {
 
          
          <View style={styles.logo}>
-          <Image source={require('./images/bolder_logo.png')} 
-          style={{width: 400, height: 200}}/>
+          <Image source={{uri: 'https://i.ibb.co/QXQkQmB/BOLDERlogo.png'}} 
+          style={{width: 350, height: 200, alignItems: 'center'}}/>
         </View>
         <View style={styles.container}>
         
@@ -80,9 +80,9 @@ export default class HomeScreen extends React.Component {
                   color: colorMap.get(this.state.skill),
                 }})}>
 	        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center'}}>
-	          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
-	            <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-	            <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
+	          <View style={{backgroundColor:'#B3B3B3', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
+	            <Image style={{width: 100, height: 100, marginRight: 20}} source={{uri: 'https://i.ibb.co/CMWPKFt/rock.png'}}/>
+	            <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}>One recording recently uploaded! </Text>
 	          </View>
 	        </View>
 	    </TouchableOpacity>
