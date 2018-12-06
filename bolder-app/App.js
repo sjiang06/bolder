@@ -135,14 +135,18 @@ class RecordingsScreen extends React.Component {
           <ImageContainer>
             {MEMORIES.map((memory, index) => (
               <TouchableOpacity 
-                onPress={() => this.props.navigation.navigate('RecordingDetails', memory)}
+                onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:memory.title, date:memory.date, params:{
+                  skill: memory.skill,
+                  goalChosen: memory.goal,
+                  color: '#FE938C'
+                }})}
                 key={index}>
                 <View style={{flexDirection:'row'}}>
                   <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}} key ={index} />
                   <View style={{flexDirection:'column'}}>
                     <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{memory.date} </Text>
                     <Text style={{fontSize:16, color: '#FBD1A2', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.skill} </Text>
-                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goals[0].goalTitle} </Text>
+                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {memory.goal} </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -248,7 +252,7 @@ class RecordingDetailsScreen extends React.Component {
         <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans'}}> {textboxText} </Text>
         <Text style={{fontSize:14, color: '#646363', fontFamily: 'Gill Sans'}}> {"November "}{params.date} </Text>
         <Image style={{width: 150, height: 150}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-        <Text style={{textAlign: 'center', fontSize:14, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, paddingRight: 20}}> {"Good job with "}{(params.goals[0].goalTitle).toLowerCase()}{"! Here are some things we can continue working on: "} </Text>
+        <Text style={{textAlign: 'center', fontSize:14, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, paddingRight: 20}}> {"Good job with "}{(params.goal).toLowerCase()}{"! Here are some things we can continue working on: "} </Text>
         <TextInput
           style={{height:40, position: 'absolute', top: 100, left: 100}}
           onChangeText={(text) => {this.setState({text}); textboxText = text; console.log(textboxText);}}
@@ -300,20 +304,13 @@ for(count = 0; count < 5; count++) {
   var skillChosen = SKILLS[getRandomInt(goalMap.size)];
   var goalsArr = [];
   var skillArr = goalMap.get(skillChosen);
-  var i;
-  for(i = 0; i < 2; i++){
-    var elem = {
-      goalTitle: skillArr[getRandomInt(skillArr.length)],
-      index: i,
-    }
-    goalsArr.push(elem);
-  };
+  var goal = skillArr[getRandomInt(skillArr.length)];
   var mem = {
     index: count,
     title: "PENDING",
     date: getRandomInt(31),
     skill: skillChosen,
-    goals: goalsArr,
+    goal: goal,
   };
   skillMap.get(mem.skill).push(mem.index);
   MEMORIES.push(mem);
