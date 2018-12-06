@@ -15,7 +15,7 @@ import styles from './src/stylesheet';
 export default class HomeScreen extends React.Component {
   constructor() {
   	super();
-  	var chosenSkill = SKILLS[getRandomInt(SKILLS.length)];
+  	this.state = { skill: SKILLS[getRandomInt(SKILLS.length)] }
   }
 
   render() {
@@ -75,9 +75,9 @@ export default class HomeScreen extends React.Component {
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewRecordingScreen', {title:'[New Recording]', date:'5', params:{
-                  skill: chosenSkill,
+                  skill: this.state.skill,
                   goalChosen: 'SET GOAL',
-                  color: colorMap.get(chosenSkill),
+                  color: colorMap.get(this.state.skill),
                 }})}>
 	        <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center', position: 'absolute'}}>
 	          <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', top: 150, borderWidth:3, borderColor: 'white'}}>
@@ -88,6 +88,14 @@ export default class HomeScreen extends React.Component {
 	    </TouchableOpacity>
 
       </View>
+      	<Button
+          title="Test that link"
+          onPress={() => this.props.navigation.navigate('NewRecordingScreen', {title:'[New Recording]', date:'5', params:{
+                  skill: this.state.skill,
+                  goalChosen: 'SET GOAL',
+                  color: colorMap.get(this.state.skill),
+                }})}
+        />
         <Button
           title="Go to Recordings"
           onPress={() => {this.props.navigation.navigate('Recordings');

@@ -11,7 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './src/stylesheet';
 import { App } from './App.js';
 
-export default class PracticeScreen extends Component {
+export default class NewRecordingScreen extends Component {
 	render() {
 		const { params } = this.props.navigation.state;
 	    return (

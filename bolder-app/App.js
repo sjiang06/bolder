@@ -17,6 +17,7 @@ import SyncScreen from './SyncScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
 import HomeScreen from './HomeScreen.js';
+import NewRecordingScreen from './NewRecordingScreen.js';
 
 
 
@@ -270,7 +271,8 @@ const RootStack = createStackNavigator(
     WeekScreen: WeekScreen,
     PracticeScreen: PracticeScreen,
     HeadphoneScreen: HeadphoneScreen,
-    SyncScreen: SyncScreen
+    SyncScreen: SyncScreen,
+    NewRecordingScreen: NewRecordingScreen
   },
   {
     initialRouteName: 'Home',
