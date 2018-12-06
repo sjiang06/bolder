@@ -4,7 +4,8 @@ let CIRCLE_RADIUS = 30;
 
 export default StyleSheet.create({
   logo: {
-    width: 200,
+    alignItems: 'center',
+    width: '100%',
     height: 100,
     marginBottom: 0,
     marginTop: 75,
@@ -50,7 +51,7 @@ export default StyleSheet.create({
     width: 180,
     height: 180,
     position: 'absolute',
-    top: -60,
+    top: -120,
     left: -180
   },
   buttonRight: {
@@ -59,7 +60,7 @@ export default StyleSheet.create({
     width: 180,
     height: 180,
     position: 'absolute',
-    top: -60,
+    top: -120,
     right: -180
   },
   iconRight: {
@@ -68,7 +69,7 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     position: 'absolute',
-    top: -30,
+    top: -90,
     right: -150
   },
   iconLeft: {
@@ -77,12 +78,12 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     position: 'absolute',
-    top: -30,
+    top: -90,
     left: -150
   },
   textLeft: {
     position: 'absolute',
-    top: 110,
+    top: 50,
     right: -160,
     fontFamily: 'Gill Sans',
     fontSize: 20,
@@ -90,7 +91,7 @@ export default StyleSheet.create({
   },
   textRight: {
     position: 'absolute',
-    top: 110,
+    top: 50,
     left: -170,
     fontFamily: 'Gill Sans',
     fontSize: 20,
@@ -101,6 +102,7 @@ export default StyleSheet.create({
   iconSmall: {
     width: 100,
     height: 100,
+    marginRight: 20
   },
   scrollstyle: {
     marginTop: 0,
@@ -189,7 +191,8 @@ export default StyleSheet.create({
 
   columnText: {
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'left'
   },
 
   pillFrame: {

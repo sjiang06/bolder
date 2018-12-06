@@ -13,6 +13,7 @@ import styles from './src/stylesheet';
 import { WeekScreen } from './WeekScreen.js';
 import { App } from './App.js';
 
+var title = '';
 
 var colors = ['#FE938C', '#59E992', '#56AAF7', '#F79256'];
 
@@ -116,13 +117,34 @@ function getStarIcon(opacity) {
 	}
 }
 
+function setMemories(goal) {
+	for (var key in Object.keys(MEMORIES)) {
+		MEMORIES[key].goalChosen = goal;
+	}
+}
+
+function setRandomMemories() {
+	for (var key in Object.keys(MEMORIES)) {
+		var goals = goalMap.get(MEMORIES[key].skill);
+		MEMORIES[key].goalChosen = goals[getRandomInt(goals.length)];
+	}
+}
+
 export default class AchievementsScreen extends Component {
 	render() {
+		const { params } = this.props.navigation.state;
+		if (params != null) {
+			setMemories(params.goal);
+		} else {
+			console.log('hello world');
+			setRandomMemories();
+			console.log(JSON.stringify(MEMORIES));
+		}
 		return(
 			<View style={styles.screenFrame}>
 		          <View style={styles.buttonFrame}>
 		          	  <TouchableOpacity style={{height:35}} onPress={()=>this.props.navigation.navigate('AchievementsList')}>
-				          <View style={styles.viewButtons}>
+				          <View style={styles.nonActiveViewButtons}>
 				            <Ionicons color='white' name="ios-star" size={50}/>
 				          </View>
 				      </TouchableOpacity>
