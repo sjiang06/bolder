@@ -21,7 +21,7 @@ export default class PracticeScreen extends Component {
 			        <Image style={{width: 150, height: 150, margin: 20}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
 			        <Text style={styles.headerText}>{params.params.skill}</Text>
 			        <Text style={styles.subheaderText}>Your goal</Text>
-			        <View style={{backgroundColor:params.params.color, width:250, height:30, borderRadius:25}}>
+			        <View style={{backgroundColor:params.params.color, width:280, height:30, borderRadius:25}}>
 			        	<Text style={{fontSize:25, color:'white', fontFamily: 'Gill Sans', textAlign:'center'}}>{params.params.goalChosen.toUpperCase()}</Text>
 			       	</View>
 			        <Text style={{textAlign: 'center', fontSize:20, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, 

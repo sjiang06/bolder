@@ -88,11 +88,6 @@ export default class HomeScreen extends React.Component {
 	    </TouchableOpacity>
 
       </View>
-        <Button
-          title="Go to Recordings"
-          onPress={() => {this.props.navigation.navigate('Recordings');
-          }}
-        />
       </View>
     );
   }
