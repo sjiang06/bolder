@@ -284,6 +284,10 @@ var skill2Arr = [];
 skillMap.set(SKILLS[2], skill2Arr);
 
 var MEMORIES = [];
+
+var TITLES = ["Lunch with Chris", "Date with Abrahm", "Working with Starr", "Presenting for Minh-Anh", "Coffee Date",
+  "Chatting with Sofía", "Talking with James Landay", "147 Presentation"]
+
 var count;
 
 var SKILL_OPTIONS = ["All"];
@@ -297,9 +301,10 @@ for(count = 0; count < 10; count++) {
   var goalsArr = [];
   var skillArr = goalMap.get(skillChosen);
   var goal = skillArr[getRandomInt(skillArr.length)];
+  var tit = TITLES[count];
   var mem = {
     index: count,
-    title: "PENDING",
+    title: tit,
     date: getRandomInt(31),
     skill: skillChosen,
     goal: goal,
