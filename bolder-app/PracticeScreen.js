@@ -13,15 +13,38 @@ import { App } from './App.js';
 
 export default class PracticeScreen extends Component {
 	render() {
+		const { params } = this.props.navigation.state;
 	    return (
 	    	<View style={{backgroundColor: '#C8E0E3', flex: 1, alignItems: 'center'}}>
-			        <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', marginTop:50}}> djnfwjenf </Text>
-			        <Text style={{fontSize:14, color: '#646363', fontFamily: 'Gill Sans'}}> qwkdqkwjdb </Text>
-			        <Image style={{width: 150, height: 150}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-			        <Text style={{textAlign: 'center', fontSize:14, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, 
-			        	paddingRight: 20}}> {"Good job with "}efbefqe
+			        <Text style={{fontSize:30, color: '#646363', fontFamily: 'Gill Sans', marginTop:50}}> {params.title} </Text>
+			        <Text style={{fontSize:20, color: '#646363', fontFamily: 'Gill Sans'}}>October {params.date}</Text>
+			        <Image style={{width: 150, height: 150, margin: 20}} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
+			        <Text style={styles.headerText}>{params.params.skill}</Text>
+			        <Text style={styles.subheaderText}>Your goal</Text>
+			        <View style={{backgroundColor:params.params.color, width:250, height:30, borderRadius:25}}>
+			        	<Text style={{fontSize:25, color:'white', fontFamily: 'Gill Sans', textAlign:'center'}}>{params.params.goalChosen.toUpperCase()}</Text>
+			       	</View>
+			        <Text style={{textAlign: 'center', fontSize:20, color: '#646363', fontFamily: 'Gill Sans', paddingVertical: 20, paddingLeft: 20, 
+			        	paddingRight: 20}}> {"Good job with always initiating the conversation first! Now try to make eye contact when speaking to the other person."}
 			        	</Text>
-			        <Text> ejf2ekjfbk2</Text>
+			        <View style={{height: 150, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}}>
+				        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
+						          <View style={styles.pillButton}>
+						          		<View style={{flexDirection: 'row'}}>
+						          			<Ionicons name="md-headset" color='white' size={25}/>
+						          			<Text style={styles.pillButtonText}> PRACTICE </Text>
+						          		</View>
+						          </View>
+				      	</TouchableOpacity>
+				      	 <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
+						          <View style={styles.pillButton}>
+						          		<View style={{flexDirection: 'row'}}>
+						          			<Ionicons name="ios-star-outline" color='white' size={25}/>
+						          			<Text style={styles.pillButtonText}> ACHIEVEMENTS </Text>
+						          		</View>
+						          </View>
+				      	</TouchableOpacity>
+				    </View>
 		    </View>
 		);
 	}
