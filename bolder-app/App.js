@@ -16,86 +16,26 @@ import HeadphoneScreen from './HeadphoneScreen.js';
 import SyncScreen from './SyncScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
-
-class HomeScreen extends React.Component {
-  render() {
-    const resizeMode = 'cover';
-    return (
-      <View style={{ flex: 1}}>
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <Image
-            style={{
-              flex: 1,
-              resizeMode,
-            }}
-            source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
-          />
-        </View>
+import HomeScreen from './HomeScreen.js';
 
 
-         
-         <View style={styles.logo}>
-          <Image source={require('./images/bolder_logo.png')} 
-          style={{width: 400, height: 200}}/>
-        </View>
-        <View style={styles.container}>
-        
-        <TouchableOpacity onPress={() => {
-            /* 1. Navigate to the Recordings route with params */
-            this.props.navigation.navigate('Recordings');
-          }}>
-          <View style={styles.columnView}>
-            <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-           />
-            <Image style={styles.iconLeft} source={{uri: 'https://i.ibb.co/RHhhSgB/noun-Playlist-972339.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textRight}> RECORDINGS </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
-          <View>
-            <Image style={styles.buttonRight} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-            />
-            <Image style={styles.iconRight} source={{uri: 'https://i.ibb.co/SJzVtRf/achievements.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
-          </View>
-        </TouchableOpacity>
-
-      </View>
-        <Button
-          title="Go to Recordings"
-          onPress={() => {
-            /* 1. Navigate to the Recordings route with params */
-            this.props.navigation.navigate('Recordings', {
-              itemId: 86,
-              otherParam: 'anything you want here',
-            });
-          }}
-        />
-      </View>
-    );
-  }
-}
 
 
 const ImageContainer = styled.View`
   display: flex;
   flex-direction: column;
 `;
+
+var colorMap = new Map([
+  ['Stuttering','#FE938C'],
+  ['Pacing','#59E992'],
+  ['Confidence','#56AAF7'],
+  ['Conversation','#F79256'],
+  ['Projection', '#FE938C'],
+  ['Public Speaking', '#FE938C'],
+  ['Making New Friends','#59E992'],
+  ['Talking to Crush','#56AAF7'],
+  ]);
 
 
 class RecordingsScreen extends React.Component {
@@ -104,7 +44,7 @@ class RecordingsScreen extends React.Component {
 
 
     return (
-      <View style={{paddingLeft: 30}}>
+      <View style={{paddingLeft: 30, paddingVertical: 30}}>
         <Text style={{fontSize: 20, color: '#00B2CA', fontFamily: 'Gill Sans'}}>RECENT</Text>
         <TouchableOpacity>
           <View style={{flexDirection:'row'}}>
@@ -112,9 +52,9 @@ class RecordingsScreen extends React.Component {
                 <View style={{flexDirection:'column'}}>
                     <Text style={{fontSize:20, color: '#000000', fontFamily: 'Gill Sans'}}> {MEMORIES[0].skill} </Text>
                     <Text style={{fontSize:20, color: '#FBD1A2', paddingVertical: 10,fontFamily: 'Gill Sans'}}> {"November "}{MEMORIES[0].date} </Text>
-                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 10, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goals[0].goalTitle} </Text>
+                    <Text style={{fontSize:16, color: '#FE938C', paddingVertical: 10, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
                     <View style={styles.pillFrame}>
-                      <View style={{backgroundColor:memory.color, width:'100%', alignItems: 'center', borderRadius:25}}>
+                      <View style={{backgroundColor:colorMap.get(MEMORIES[0].skill), width:'100%', alignItems: 'center', borderRadius:25}}>
                         <Text style={{fontSize:16, color: 'white', paddingVertical: 0, fontFamily: 'Gill Sans'}}> {MEMORIES[0].goal} </Text>
                       </View>
                     </View>
@@ -129,7 +69,7 @@ class RecordingsScreen extends React.Component {
                 onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:memory.title, date:memory.date, params:{
                   skill: memory.skill,
                   goalChosen: memory.goal,
-                  color: '#FE938C'
+                  color: colorMap.get(memory.skill),
                 }})}
                 key={index}>
                 <View style={{flexDirection:'row'}}>
@@ -284,7 +224,7 @@ skillMap.set(SKILLS[2], skill2Arr);
 
 var MEMORIES = [];
 
-var TITLES = ["Lunch with Chris", "Date with Abrahm", "Working with Starr", "Presenting for Minh-Anh", "Coffee Date",
+var TITLES = ["Lunch with Chris", "Date with Abrahm", "Working with Starr", "Presenting for Minh-An", "Coffee Date",
   "Chatting with Sofía", "Talking with James Landay", "147 Presentation"]
 
 var count;
