@@ -16,89 +16,13 @@ import HeadphoneScreen from './HeadphoneScreen.js';
 import SyncScreen from './SyncScreen.js';
 import HelpScreen from './HelpScreen.js';
 import styles from './src/stylesheet';
+import HomeScreen from './HomeScreen.js';
 import NewRecordingScreen from './NewRecordingScreen.js';
 
 const ImageContainer = styled.View`
   display: flex;
   flex-direction: column;
 `;
-
-class HomeScreen extends Component {
-  render() {
-    const resizeMode = 'cover';
-    return (
-      <View style={{ flex: 1}}>
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <Image
-            style={{
-              flex: 1,
-              resizeMode,
-            }}
-            source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
-          />
-        </View>
-
-
-         
-         <View style={styles.logo}>
-          <Image source={require('./images/bolder_logo.png')} 
-          style={{width: 400, height: 200}}/>
-        </View>
-        <View style={styles.container}>
-        
-        <TouchableOpacity onPress={() => {
-            /* 1. Navigate to the Recordings route with params */
-            this.props.navigation.navigate('Recordings');
-          }}>
-          <View style={styles.columnView}>
-            <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-           />
-            <Image style={styles.iconLeft} source={{uri: 'https://i.ibb.co/RHhhSgB/noun-Playlist-972339.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textRight}> RECORDINGS </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
-          <View>
-            <Image style={styles.buttonRight} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-            />
-            <Image style={styles.iconRight} source={{uri: 'https://i.ibb.co/SJzVtRf/achievements.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:MEMORIES[0].title, date:MEMORIES[0].date, params:{
-                  skill: MEMORIES[0].skill,
-                  goalChosen: MEMORIES[0].goal,
-                  color: colorMap.get(MEMORIES[0].skill),
-                }})}>
-          <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center'}}>
-            <View style={{backgroundColor:'grey', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
-              <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}}/>
-              <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}> You have one new recording! </Text>
-            </View>
-          </View>
-      </TouchableOpacity>
-
-      </View>
-      </View>
-    );
-  }
-}
-
 
 var colorMap = new Map([
   ['Stuttering','#FE938C'],
@@ -114,10 +38,24 @@ var colorMap = new Map([
 var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
 
 class RecordingsScreen extends React.Component {
+  constructor() {
+      super();
+      this.updateMemories = this.updateMemories.bind(this);
+      this.state = {
+        currMem: null
+      }
+    }
+
+  updateMemories(updated) {
+    var current = this.state.currMem;
+    current.title = updated.title;
+    current.skill = updated.skill;
+    current.goal = updated.goal;
+    this.setState({currMem: current});
+  }
+
   render() {
     /* 2. Get the param, provide a fallback value if not available */
-
-
     return (
       <View style={{paddingLeft: 30, paddingVertical: 30, marginTop:40}}>
         <Text style={{fontSize: 25, color: '#00B2CA', fontFamily: 'Gill Sans'}}>NEW RECORDING!</Text>
@@ -144,11 +82,12 @@ class RecordingsScreen extends React.Component {
           <ImageContainer>
             {MEMORIES.slice(1).map((memory, index) => (
               <TouchableOpacity 
-                onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:memory.title, date:memory.date, params:{
+                onPress={()=>  {this.setState.currMem = memory; this.props.navigation.navigate('PracticeScreen', {title:memory.title, date:memory.date, callback:this.updateMemories.bind(this), params:{
                   skill: memory.skill,
                   goalChosen: memory.goal,
                   color: colorMap.get(memory.skill),
-                }})}
+                }});}
+              }
                 key={index}>
                 <View style={{flexDirection:'row', justifyContent:'flex-start'}}>
                   <Image style={styles.iconSmall} source={{uri: 'https://i.ibb.co/D4Hwg4L/Screen-Shot-2018-11-30-at-2-33-39-AM.png'}} key ={index} />
@@ -165,78 +104,6 @@ class RecordingsScreen extends React.Component {
         </ScrollView>
       </View>
     );
-  }
-}
-
-class Draggable extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showDraggable: true,
-      dropAreaValues: null,
-      pan: new Animated.ValueXY(),
-      opacity: new Animated.Value(1)
-    };
-  }
-
-  componentWillMount() {
-    this._val = { x:0, y:0 }
-    this.state.pan.addListener((value) => this._val = value);
-
-    this.panResponder = PanResponder.create({
-        onStartShouldSetPanResponder: (e, gesture) => true,
-        onPanResponderGrant: (e, gesture) => {
-          this.state.pan.setOffset({
-            x: this._val.x,
-            y:this._val.y
-          })
-          this.state.pan.setValue({ x:0, y:0})
-        },
-        onPanResponderMove: Animated.event([ 
-          null, { dx: this.state.pan.x, dy: this.state.pan.y }
-        ]),
-        onPanResponderRelease: (e, gesture) => {
-          if (this.isDropArea(gesture)) {
-            Animated.timing(this.state.opacity, {
-              toValue: 0,
-              duration: 1000
-            }).start(() =>
-              this.setState({
-                showDraggable: false
-              })
-            );
-          } 
-        }
-      });
-  }
-
-  isDropArea(gesture) {
-    return gesture.moveY < 200;
-  }
-
-  render() {
-    return (
-      <View style={{ width: "20%", alignItems: "center" }}>
-        {this.renderDraggable()}
-      </View>
-    );
-  }
-
-  renderDraggable() {
-    const panStyle = {
-      transform: this.state.pan.getTranslateTransform()
-    }
-    if (this.state.showDraggable) {
-      return (
-        <View style={{ position: "absolute" }}>
-          <Animated.View
-            {...this.panResponder.panHandlers}
-            style={[panStyle, styles.circle, {opacity:this.state.opacity}]}
-          />
-        </View>
-      );
-    }
   }
 }
 
@@ -341,7 +208,7 @@ MEMORIES.sort(compareMemories)
 
 const RootStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    HomeScreen: HomeScreen,
     Recordings: RecordingsScreen,
     RecordingDetails: RecordingDetailsScreen,
     AchievementList: AchievementsScreen,
@@ -353,7 +220,7 @@ const RootStack = createStackNavigator(
     NewRecordingScreen: NewRecordingScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'HomeScreen',
     headerMode: 'none',
     navigationOptions: {
       headerVisible: false,
