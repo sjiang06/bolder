@@ -18,6 +18,7 @@ goals = ['anunciation', 'projection', 'making conversation',
 intro = 'recordings/intro.mp3'
 prompt = 'recordings/prompt.mp3'
 jingle = 'recordings/jingle.mp3'
+main_menu = 'recordings/main_menu.mp3'
 
 # recording
 pre_recording = 'recordings/recording_warning.mp3'

@@ -5,6 +5,7 @@ import phrases
 gTTS("Hi Minh-An! What would you like to do today?").save(phrases.intro)
 gTTS("Is there anything else you would like to do?").save(phrases.prompt)
 gTTS("Boldie, the bolder").save('recordings/jingle.mp3')
+gTTS("You are in the main menu.").save(phrases.main_menu)
 
 
 # recording

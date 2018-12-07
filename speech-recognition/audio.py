@@ -177,6 +177,8 @@ while not endSession:
     elif command.lower() == 'no' or command.lower() == 'goodbye':
         playAudio(phrases.sign_off)
         endSession = True
+    elif command.lower() == 'current mode':
+        playAudio(phrases.main_menu)
     else: 
         playAudio(phrases.try_again)
     if not endSession: playAudio(phrases.prompt)
