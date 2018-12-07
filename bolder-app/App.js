@@ -43,6 +43,7 @@ class HomeScreen extends React.Component {
     return (
 
       <View style={{ flex: 1}}>
+        
         <View
           style={{
             position: 'absolute',
@@ -333,7 +334,7 @@ const TabBar = createBottomTabNavigator(
       navigationOptions: {
         tabBarVisible: false,
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons color='white' name="ios-bluetooth" size={40}/>
+          <Ionicons color='#59E992' name="ios-bluetooth" size={40}/>
         )
       },
     },
