@@ -247,7 +247,7 @@ function getRandomInt(max) {
 var SKILLS = ["Public Speaking", "Making New Friends", "Talking to Crush"];
 var PublicSpeakingGoals = ["Self Confidence", "Pacing", "Memorization", "Stuttering"];
 var MakingNewFriendsGoals = ["Asking Questions", "Introducing Self", "Initiating Hangouts", "Being Vulnerable"];
-var TalkingToCrushGoals = ["Texting First", "Planning Hangouts", "Physical Affection", "Asking Questions"];
+var TalkingToCrushGoals = ["Planning Hangouts", "Asking Questions", "Saying Hello First"];
 const goalMap = new Map();
 goalMap.set(SKILLS[0], PublicSpeakingGoals);
 goalMap.set(SKILLS[1], MakingNewFriendsGoals);

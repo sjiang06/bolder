@@ -43,7 +43,7 @@ goalMap.set(SKILLS[3], PresentationGoals);
 var achievementMap = new Map([
 	['Stuttering',['Say "Um" 50% Less', 'Pause between Sentences', 'Make a Mental Roadmap']], 
 	['Pacing',['Slow Pace by 20%', 'Make Eye Contact']], 
-	['Confidence',['10 Day Eye Contact Streak']],
+	['Confidence',['Ask Questions First']],
 	['Conversation',['Come Up with 5 Topics']],
 	['Projection', ['Increase Your Volume by 50%']]
 	]);
