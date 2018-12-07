@@ -1,4 +1,4 @@
-#BOLDer app
+# BOLDer app
 Welcome to the BOLDer app!
 This app is designed for the iPhoneX
 
