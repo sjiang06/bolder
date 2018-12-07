@@ -7,7 +7,7 @@ import {Button, View,
   TouchableOpacity, PanResponder,
   Animated, TextInput} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from 'react-native-vector-icons';
 import AchievementsScreen from './AchievementsScreen.js';
 import CalendarScreen from './CalendarScreen.js';
 import WeekScreen from './WeekScreen.js';

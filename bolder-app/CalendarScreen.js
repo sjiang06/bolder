@@ -7,7 +7,7 @@ import {Button, View,
   TouchableOpacity, PanResponder,
   Animated} from 'react-native';
 import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from 'react-native-vector-icons';
 import styles from './src/stylesheet'
 
 import { Dropdown } from 'react-native-material-dropdown';
