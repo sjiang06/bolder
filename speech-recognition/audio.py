@@ -54,6 +54,38 @@ def practice(goal):
     sayPractice(goal)
     playAudio(phrases.practice_skill)
 
+def highlightRecording(name):
+    playAudio(phrases.recording_options)
+    command = getCommand()
+    if command.lower() == 'play':
+        playRecording(name)
+    elif command.lower() == 'delete':
+        deleteRecording(name)
+    elif command.lower() == 'set goals':
+        setGoals(name)
+
+def setGoals(name):
+    name = name.lower()
+    gTTS("The current goal for " + name + " is " + phrases.recordings[name] + \
+            ". What would you like to set the goal to?").save(phrases.reset_goal)
+    playAudio(phrases.reset_goal)
+    command = getCommand()
+    gTTS("Setting the goal for " + name + " to " + command.lower()).save(phrases.set_goal)
+    playAudio(phrases.set_goal)
+    currGoal = phrases.recordings[name]
+    phrases.recordings[name] = command.lower()
+    phrases.goals.remove(currGoal)
+
+def deleteRecording(name):
+    playAudio(phrases.delete_recording)
+    command = getCommand()
+    if command.lower() == 'yes':
+        gTTS("Deleting" + name.lower() + ".").save(phrases.confirm_delete)
+        playAudio(phrases.confirm_delete)
+        del phrases.recordings[name.lower()]
+        print phrases.recordings
+        deleteRecordingFromSkills(name)
+
 def playRecording(name):
     gTTS("Now playing " + name.lower() + ".").save(phrases.play_recording)
     playAudio(phrases.play_recording)
@@ -67,13 +99,12 @@ def playRecording(name):
     else:
         playAudio(phrases.try_again)
 
-
 def selectRecording(command):
     listRecordings(command.lower())
     playAudio(phrases.list_recordings)
     name = getCommand()
     if name.lower() in phrases.skills[command.lower()]:
-        playRecording(name.lower())
+        highlightRecording(name.lower())
     elif name.lower() == 'back':
         return
     else:
@@ -85,7 +116,7 @@ def search():
     if command.lower() in phrases.skills:
         selectRecording(command)
     elif command.lower() in phrases.recordings:
-        playRecording(command.lower())
+        highlightRecording(command.lower())
     elif command.lower() == 'list skills' or command.lower() == 'list options':
         listSkills()
         playAudio(phrases.list_skills)

@@ -72,3 +72,12 @@ def playAudio(filename):
 	while pygame.mixer.music.get_busy():
 		pygame.time.delay(100)
 
+def deleteRecordingFromSkills(name):
+	name = name.lower()
+	for s in phrases.skills:
+		if name in phrases.skills[s]:
+			phrases.skills[s].remove(name)
+			if len(phrases.skills[s]) == 0:
+				del phrases.skills[s]
+
+

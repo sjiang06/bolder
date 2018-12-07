@@ -29,6 +29,7 @@ select = "recordings/select.mp3"
 recording_mode = 'recordings/recording_mode.mp3'
 all_recordings = 'recordings/all_recordings.mp3'
 save_recording = 'recordings/save_recording.mp3'
+recording_options = 'recordings/recording_options.mp3'
 
 # search
 search_prompt = 'recordings/search_prompt.mp3'
@@ -50,6 +51,14 @@ try_again = 'recordings/try_again.mp3'
 stop_help = 'recordings/stop_help.mp3'
 list_recordings = 'recordings/list_recordings.mp3'
 sync = 'recordings/sync.mp3'
+
+#delete
+delete_recording = 'recordings/delete_recording.mp3'
+confirm_delete = 'recordings/confirm_delete.mp3'
+
+#reset goal
+reset_goal = 'recordings/reset_goal.mp3'
+set_goal = 'recordings/set_goal.mp3'
 
 # end
 sign_off = 'recordings/sign_off.mp3'
