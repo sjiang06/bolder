@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SQLite } from 'expo';
 import styled from 'styled-components/native';
 import {WebView, Button, View, 
   Text, StyleSheet, 
