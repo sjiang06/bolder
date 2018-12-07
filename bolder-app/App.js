@@ -61,9 +61,7 @@ class HomeScreen extends React.Component {
             source={{uri: 'https://i.ibb.co/kyynhkK/home.png'}}
           />
         </View>
-
-
-         
+        
          <View style={styles.logo}>
           <Image source={{uri: 'https://i.ibb.co/QXQkQmB/BOLDERlogo.png'}} 
           style={{top:-40,width: 350, height: 200, alignItems: 'center'}}/>
@@ -90,45 +88,43 @@ class HomeScreen extends React.Component {
           </View>
 
         <View style={styles.container}>
-        
-        <TouchableOpacity onPress={() => {
-            /* 1. Navigate to the Recordings route with params */
-            this.props.navigation.navigate('Recordings');
-          }}>
-          <View style={styles.columnView}>
-            <Image style={styles.buttonLeft} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-           />
-            <Image style={styles.iconLeft} source={{uri: 'https://i.ibb.co/RHhhSgB/noun-Playlist-972339.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textRight}> RECORDINGS </Text>
-          </View>
-        </TouchableOpacity>
+        <View style={{flexDirection:'row', justifyContent:'space-around', width:'100%'}}>
+          <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Recordings');
+            }}>
+            <View style={styles.columnView}>
 
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
-          <View>
-            <Image style={styles.buttonRight} source={{uri: 'https://i.ibb.co/6D7f4kq/blue-blob.png'}} 
-              resizeMode="contain"
-            />
-            <Image style={styles.iconRight} source={{uri: 'https://i.ibb.co/SJzVtRf/achievements.png'}} 
-              resizeMode="contain"
-            />
-            <Text style={styles.textLeft}> ACHIEVEMENTS </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:MEMORIES[0].title, date: MEMORIES[0].date, params:{
+              <Image style={styles.homeButton} source={{uri: 'https://i.ibb.co/2W5SnBF/recordings.png'}} 
+                resizeMode="contain"
+             />
+              <Text style={styles.labelText}> RECORDINGS </Text>
+            </View>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('AchievementList')}>
+            <View style={styles.columnView}>
+              <Image style={styles.homeButton} source={{uri: 'https://i.ibb.co/KjkRT7f/achievements.png'}} 
+                resizeMode="contain"
+              />
+              
+              <Text style={styles.labelText}> ACHIEVEMENTS </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        
+        <View style={style={top: 25,width: 300, height: 150, alignItems: 'center'}}>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('PracticeScreen', {title:MEMORIES[0].title, date: MEMORIES[0].date, params:{
                   skill: MEMORIES[0].skill,
                   goalChosen: MEMORIES[0].goal,
                   color: colorMap.get(MEMORIES[0].skill),
                 }})}>
-          <View style={style={paddingTop: 3, width: 300, height: 150, alignItems: 'center'}}>
-            <View style={{backgroundColor:'#B3B3B3', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', top: 150, borderWidth:3, borderColor: 'white'}}>
+            <View style={{backgroundColor:'#B3B3B3', width: 250, height: 130, alignItems: 'center', borderRadius:25, flexDirection:'row', justifyContent:'flex-start', borderWidth:3, borderColor: 'white'}}>
               <Image style={{width: 100, height: 100, marginRight: 20}} source={{uri: 'https://i.ibb.co/CMWPKFt/rock.png'}}/>
               <Text style={{fontSize:20, width: 125, textAlign: 'left', color: 'white', fontFamily: 'Gill Sans'}}>One recording recently uploaded! </Text>
             </View>
+            </TouchableOpacity>
           </View>
-      </TouchableOpacity>
 
       </View>
       </View>

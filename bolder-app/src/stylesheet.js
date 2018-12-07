@@ -45,64 +45,21 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
-  buttonLeft: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 180,
-    height: 180,
-    position: 'absolute',
-    top: -90,
-    left: -180
+  homeButton: {
+    width:160,
+    height:160,
+    backgroundColor: 'transparent'
   },
-  buttonRight: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 180,
-    height: 180,
-    position: 'absolute',
-    top: -90,
-    right: -180
-  },
-  iconRight: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 120,
-    height: 120,
-    position: 'absolute',
-    top: -60,
-    right: -150
-  },
-  iconLeft: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    width: 120,
-    height: 120,
-    position: 'absolute',
-    top: -60,
-    left: -150
-  },
-  textLeft: {
-    position: 'absolute',
-    top: 80,
-    right: -160,
-    fontFamily: 'Gill Sans',
-    fontSize: 20,
-    color: 'white'
-  },
-  textRight: {
-    position: 'absolute',
-    top: 80,
-    left: -170,
+
+  labelText: {
     fontFamily: 'Gill Sans',
     fontSize: 20,
     color: 'white',
     textAlign: 'center'
-
   },
   iconSmall: {
     width: 100,
     height: 100,
-    marginRight: 20
   },
   scrollstyle: {
     marginTop: 0,
@@ -311,5 +268,10 @@ export default StyleSheet.create({
     backgroundColor: '#DDDDDD',
     padding: 10,
     borderRadius: 10,
+  },
+
+  bluetooth: {
+    position: 'absolute',
+
   }
 });
