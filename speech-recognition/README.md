@@ -1,15 +1,11 @@
 This is the speech recognition code for the BOLDer earpiece.
 
-Before running, you install the following libraries:
+Before running, you must install the following libraries:
 
 Speech Recognition: pip install speechrecognition
-
 PyAudio: homebrew install portaudio, then pip install pyaudio
-
 Google API Client Library: pip install google-api-python-client
-
 gtts: pip install gtts
-
 PyGame: pip install pygame
 
 To run the voice interaction, type python audio.py
@@ -22,7 +18,7 @@ HOW TO INTERACT WITH BOLDIE
 2. Say 'Back' to get to the previous state.
 
 FEATURES
-1. Ability to delete and reset goals of recordigns in the search state.
+1. Ability to delete and reset goals of recordings in the search state.
 2. Help navigation when you say 'list options' in main and search state.
 3. Prompts for easy navigation when what needs to be said isn't obvious.
 
