@@ -1,3 +1,5 @@
+#BOLDer earpiece 
+
 This is the speech recognition code for the BOLDer earpiece.
 
 Before running, you must install the following libraries:
