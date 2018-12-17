@@ -1,4 +1,4 @@
-#BOLDer earpiece 
+# BOLDer earpiece 
 
 This is the speech recognition code for the BOLDer earpiece.
 
