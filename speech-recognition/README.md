@@ -4,11 +4,11 @@ This is the speech recognition code for the BOLDer earpiece.
 
 Before running, you must install the following libraries:
 
-Speech Recognition: pip install speechrecognition
-PyAudio: homebrew install portaudio, then pip install pyaudio
-Google API Client Library: pip install google-api-python-client
-gtts: pip install gtts
-PyGame: pip install pygame
+1. Speech Recognition: pip install speechrecognition
+2. PyAudio: homebrew install portaudio, then pip install pyaudio
+3. Google API Client Library: pip install google-api-python-client
+4. gtts: pip install gtts
+5. PyGame: pip install pygame
 
 To run the voice interaction, type python audio.py
 
