@@ -4,9 +4,12 @@ This is the speech recognition code for the BOLDer earpiece.
 
 Before running, you must install the following libraries:
 
-Speech Recognition: pip install speechrecognition
+Speech Recognition: pip install speechrecognition \n
+
 PyAudio: homebrew install portaudio, then pip install pyaudio
+
 Google API Client Library: pip install google-api-python-client
+
 gtts: pip install gtts
 PyGame: pip install pygame
 
